@@ -4,7 +4,7 @@
 #
 Name     : paper-icon-theme
 Version  : 1.5.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Source0  : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Summary  : Paper Icon theme
@@ -13,6 +13,7 @@ License  : CC-BY-SA-4.0
 Requires: paper-icon-theme-data = %{version}-%{release}
 Requires: paper-icon-theme-license = %{version}-%{release}
 BuildRequires : buildreq-meson
+BuildRequires : pkgconfig(gtk+-3.0)
 
 %description
 Paper is simple and modern icon theme with material design influences.
@@ -41,7 +42,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543330073
+export SOURCE_DATE_EPOCH=1543330535
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
@@ -49,6 +50,10 @@ ninja -v -C builddir
 mkdir -p %{buildroot}/usr/share/package-licenses/paper-icon-theme
 cp LICENSE %{buildroot}/usr/share/package-licenses/paper-icon-theme/LICENSE
 DESTDIR=%{buildroot} ninja -C builddir install
+## install_append content
+gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper -f &&
+gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -2316,6 +2321,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-100.svg
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-charged.svg
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-missing.svg
+/usr/share/icons/Paper-Mono-Dark/icon-theme.cache
 /usr/share/icons/Paper-Mono-Dark/index.theme
 /usr/share/icons/Paper/16x16/actions/action-unavailable.svg
 /usr/share/icons/Paper/16x16/actions/add.svg
@@ -27710,6 +27716,7 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/share/icons/Paper/cursors/xterm
 /usr/share/icons/Paper/cursors/zoom-in
 /usr/share/icons/Paper/cursors/zoom-out
+/usr/share/icons/Paper/icon-theme.cache
 /usr/share/icons/Paper/index.theme
 /usr/share/icons/Paper/scalable/actions/action-unavailable-symbolic.svg
 /usr/share/icons/Paper/scalable/actions/address-book-new-symbolic.svg
