@@ -4,7 +4,7 @@
 #
 Name     : paper-icon-theme
 Version  : 1.5.0
-Release  : 2
+Release  : 3
 URL      : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Source0  : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Summary  : Paper Icon theme
@@ -42,7 +42,8 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543330535
+export SOURCE_DATE_EPOCH=1551732278
+export LDFLAGS="${LDFLAGS} -fno-lto"
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
 
@@ -60,6 +61,8 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 
 %files data
 %defattr(-,root,root,-)
+%exclude /usr/share/icons/Paper-Mono-Dark/icon-theme.cache
+%exclude /usr/share/icons/Paper/icon-theme.cache
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting01.svg
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting02.svg
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting03.svg
@@ -2321,7 +2324,6 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-100.svg
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-charged.svg
 /usr/share/icons/Paper-Mono-Dark/24x24/panel/xfpm-ups-missing.svg
-/usr/share/icons/Paper-Mono-Dark/icon-theme.cache
 /usr/share/icons/Paper-Mono-Dark/index.theme
 /usr/share/icons/Paper/16x16/actions/action-unavailable.svg
 /usr/share/icons/Paper/16x16/actions/add.svg
@@ -27716,7 +27718,6 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/cursors/xterm
 /usr/share/icons/Paper/cursors/zoom-in
 /usr/share/icons/Paper/cursors/zoom-out
-/usr/share/icons/Paper/icon-theme.cache
 /usr/share/icons/Paper/index.theme
 /usr/share/icons/Paper/scalable/actions/action-unavailable-symbolic.svg
 /usr/share/icons/Paper/scalable/actions/address-book-new-symbolic.svg
