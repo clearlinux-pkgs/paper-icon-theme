@@ -1,0 +1,39 @@
+From f5e77e767b870b4137728aaf2fa688ed96ea5335 Mon Sep 17 00:00:00 2001
+From: tista500 <tista.gma500@gmail.com>
+Date: Thu, 7 Feb 2019 10:40:08 +0900
+Subject: [PATCH 1/2] Added symlinks for Gnome-Terminal 3.31.90
+
+Upstream renamed its icon name from 'utilities-terminal' to 'org.gnome.Terminal':
+https://gitlab.gnome.org/GNOME/gnome-terminal/commit/9c32e039bfb7902c136dc7aed3308e027325776c
+---
+ src/symlinks/bitmaps/apps.list  | 1 +
+ src/symlinks/scalable/apps.list | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/src/symlinks/bitmaps/apps.list b/src/symlinks/bitmaps/apps.list
+index 017ba43..ccd9528 100755
+--- a/src/symlinks/bitmaps/apps.list
++++ b/src/symlinks/bitmaps/apps.list
+@@ -666,6 +666,7 @@ utilities-terminal.png gnome-eterm.png
+ utilities-terminal.png gnome-xterm.png
+ utilities-terminal.png lxterminal.png
+ utilities-terminal.png openterm.png
++utilities-terminal.png org.gnome.Terminal.png
+ utilities-terminal.png qterminal.png
+ utilities-terminal.png terminal-tango.png
+ utilities-terminal.png terminal.png
+diff --git a/src/symlinks/scalable/apps.list b/src/symlinks/scalable/apps.list
+index b842705..5a852f7 100755
+--- a/src/symlinks/scalable/apps.list
++++ b/src/symlinks/scalable/apps.list
+@@ -5,6 +5,7 @@ multimedia-photo-manager-symbolic.svg shotwell-symbolic.svg
+ multimedia-photo-viewer-symbolic.svg eog-symbolic.svg
+ password-manager-symbolic.svg seahorse-symbolic.svg
+ google-chrome-symbolic.svg chromium-browser-symbolic.svg
++utilities-terminal-symbolic.svg org.gnome.Terminal-symbolic.svg
+ utilities-tweak-tool-symbolic.svg gnome-tweak-tool-symbolic.svg
+ utilities-tweak-tool-symbolic.svg org.gnome.tweaks-symbolic.svg
+ utilities-tweak-tool-symbolic.svg unity-tweak-tool-symbolic.svg
+-- 
+2.20.1
+

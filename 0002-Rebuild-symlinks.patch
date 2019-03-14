@@ -1,0 +1,1615 @@
+From 854ded525ff907a5c8c96dd8aa0b0f3f3895ae63 Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <ikey.doherty@intel.com>
+Date: Thu, 14 Mar 2019 11:19:22 +0000
+Subject: [PATCH 2/2] Rebuild symlinks
+
+This adds missing gnome-terminal link from previous upstream patch
+as well as generating ones missing from the 1.5 release.
+
+Signed-off-by: Ikey Doherty <ikey.doherty@intel.com>
+---
+ Paper/16x16/actions/mail-reply.png                       | 1 +
+ Paper/16x16/apps/QtProject-linguist.png                  | 1 +
+ Paper/16x16/apps/linguist-qt4.png                        | 1 +
+ Paper/16x16/apps/linguist.png                            | 1 +
+ Paper/16x16/apps/linphone.png                            | 1 +
+ Paper/16x16/apps/org.gnome.Terminal.png                  | 1 +
+ Paper/16x16/apps/xsane.png                               | 1 +
+ Paper/16x16/mimetypes/application-illustrator.png        | 1 +
+ Paper/16x16/mimetypes/application-vnd.ms-access.png      | 1 +
+ Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png      | 1 +
+ Paper/16x16/status/aptdaemon-add.png                     | 1 +
+ Paper/16x16/status/aptdaemon-download.png                | 1 +
+ Paper/16x16/status/feed-non-starred.png                  | 1 +
+ Paper/16x16/status/non-starred-grey.png                  | 1 +
+ Paper/16x16/status/pin-up.png                            | 1 +
+ Paper/16x16/status/rating-unrated.png                    | 1 +
+ Paper/16x16@2x/actions/mail-reply.png                    | 1 +
+ Paper/16x16@2x/apps/QtProject-linguist.png               | 1 +
+ Paper/16x16@2x/apps/linguist-qt4.png                     | 1 +
+ Paper/16x16@2x/apps/linguist.png                         | 1 +
+ Paper/16x16@2x/apps/linphone.png                         | 1 +
+ Paper/16x16@2x/apps/org.gnome.Terminal.png               | 1 +
+ Paper/16x16@2x/apps/xsane.png                            | 1 +
+ Paper/16x16@2x/mimetypes/application-illustrator.png     | 1 +
+ Paper/16x16@2x/mimetypes/application-vnd.ms-access.png   | 1 +
+ Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png   | 1 +
+ Paper/16x16@2x/status/aptdaemon-add.png                  | 1 +
+ Paper/16x16@2x/status/aptdaemon-download.png             | 1 +
+ Paper/16x16@2x/status/feed-non-starred.png               | 1 +
+ Paper/16x16@2x/status/non-starred-grey.png               | 1 +
+ Paper/16x16@2x/status/pin-up.png                         | 1 +
+ Paper/16x16@2x/status/rating-unrated.png                 | 1 +
+ Paper/24x24/actions/mail-reply.png                       | 1 +
+ Paper/24x24/apps/QtProject-linguist.png                  | 1 +
+ Paper/24x24/apps/linguist-qt4.png                        | 1 +
+ Paper/24x24/apps/linguist.png                            | 1 +
+ Paper/24x24/apps/linphone.png                            | 1 +
+ Paper/24x24/apps/org.gnome.Terminal.png                  | 1 +
+ Paper/24x24/apps/xsane.png                               | 1 +
+ Paper/24x24/mimetypes/application-illustrator.png        | 1 +
+ Paper/24x24/mimetypes/application-vnd.ms-access.png      | 1 +
+ Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png      | 1 +
+ Paper/24x24/status/aptdaemon-add.png                     | 1 +
+ Paper/24x24/status/aptdaemon-download.png                | 1 +
+ Paper/24x24/status/feed-non-starred.png                  | 1 +
+ Paper/24x24/status/non-starred-grey.png                  | 1 +
+ Paper/24x24/status/pin-up.png                            | 1 +
+ Paper/24x24/status/rating-unrated.png                    | 1 +
+ Paper/24x24@2x/actions/mail-reply.png                    | 1 +
+ Paper/24x24@2x/apps/QtProject-linguist.png               | 1 +
+ Paper/24x24@2x/apps/linguist-qt4.png                     | 1 +
+ Paper/24x24@2x/apps/linguist.png                         | 1 +
+ Paper/24x24@2x/apps/linphone.png                         | 1 +
+ Paper/24x24@2x/apps/org.gnome.Terminal.png               | 1 +
+ Paper/24x24@2x/apps/xsane.png                            | 1 +
+ Paper/24x24@2x/mimetypes/application-illustrator.png     | 1 +
+ Paper/24x24@2x/mimetypes/application-vnd.ms-access.png   | 1 +
+ Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png   | 1 +
+ Paper/24x24@2x/status/aptdaemon-add.png                  | 1 +
+ Paper/24x24@2x/status/aptdaemon-download.png             | 1 +
+ Paper/24x24@2x/status/feed-non-starred.png               | 1 +
+ Paper/24x24@2x/status/non-starred-grey.png               | 1 +
+ Paper/24x24@2x/status/pin-up.png                         | 1 +
+ Paper/24x24@2x/status/rating-unrated.png                 | 1 +
+ Paper/32x32/actions/mail-reply.png                       | 1 +
+ Paper/32x32/apps/QtProject-linguist.png                  | 1 +
+ Paper/32x32/apps/linguist-qt4.png                        | 1 +
+ Paper/32x32/apps/linguist.png                            | 1 +
+ Paper/32x32/apps/linphone.png                            | 1 +
+ Paper/32x32/apps/org.gnome.Terminal.png                  | 1 +
+ Paper/32x32/apps/xsane.png                               | 1 +
+ Paper/32x32/mimetypes/application-illustrator.png        | 1 +
+ Paper/32x32/mimetypes/application-vnd.ms-access.png      | 1 +
+ Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png      | 1 +
+ Paper/32x32/status/aptdaemon-add.png                     | 1 +
+ Paper/32x32/status/aptdaemon-download.png                | 1 +
+ Paper/32x32/status/feed-non-starred.png                  | 1 +
+ Paper/32x32/status/non-starred-grey.png                  | 1 +
+ Paper/32x32/status/pin-up.png                            | 1 +
+ Paper/32x32/status/rating-unrated.png                    | 1 +
+ Paper/32x32@2x/actions/mail-reply.png                    | 1 +
+ Paper/32x32@2x/apps/QtProject-linguist.png               | 1 +
+ Paper/32x32@2x/apps/linguist-qt4.png                     | 1 +
+ Paper/32x32@2x/apps/linguist.png                         | 1 +
+ Paper/32x32@2x/apps/linphone.png                         | 1 +
+ Paper/32x32@2x/apps/org.gnome.Terminal.png               | 1 +
+ Paper/32x32@2x/apps/xsane.png                            | 1 +
+ Paper/32x32@2x/mimetypes/application-illustrator.png     | 1 +
+ Paper/32x32@2x/mimetypes/application-vnd.ms-access.png   | 1 +
+ Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png   | 1 +
+ Paper/32x32@2x/status/aptdaemon-add.png                  | 1 +
+ Paper/32x32@2x/status/aptdaemon-download.png             | 1 +
+ Paper/32x32@2x/status/feed-non-starred.png               | 1 +
+ Paper/32x32@2x/status/non-starred-grey.png               | 1 +
+ Paper/32x32@2x/status/pin-up.png                         | 1 +
+ Paper/32x32@2x/status/rating-unrated.png                 | 1 +
+ Paper/48x48/actions/mail-reply.png                       | 1 +
+ Paper/48x48/apps/QtProject-linguist.png                  | 1 +
+ Paper/48x48/apps/linguist-qt4.png                        | 1 +
+ Paper/48x48/apps/linguist.png                            | 1 +
+ Paper/48x48/apps/linphone.png                            | 1 +
+ Paper/48x48/apps/org.gnome.Terminal.png                  | 1 +
+ Paper/48x48/apps/xsane.png                               | 1 +
+ Paper/48x48/mimetypes/application-illustrator.png        | 1 +
+ Paper/48x48/mimetypes/application-vnd.ms-access.png      | 1 +
+ Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png      | 1 +
+ Paper/48x48/status/aptdaemon-add.png                     | 1 +
+ Paper/48x48/status/aptdaemon-download.png                | 1 +
+ Paper/48x48/status/feed-non-starred.png                  | 1 +
+ Paper/48x48/status/non-starred-grey.png                  | 1 +
+ Paper/48x48/status/pin-up.png                            | 1 +
+ Paper/48x48/status/rating-unrated.png                    | 1 +
+ Paper/48x48@2x/actions/mail-reply.png                    | 1 +
+ Paper/48x48@2x/apps/QtProject-linguist.png               | 1 +
+ Paper/48x48@2x/apps/linguist-qt4.png                     | 1 +
+ Paper/48x48@2x/apps/linguist.png                         | 1 +
+ Paper/48x48@2x/apps/linphone.png                         | 1 +
+ Paper/48x48@2x/apps/org.gnome.Terminal.png               | 1 +
+ Paper/48x48@2x/apps/xsane.png                            | 1 +
+ Paper/48x48@2x/mimetypes/application-illustrator.png     | 1 +
+ Paper/48x48@2x/mimetypes/application-vnd.ms-access.png   | 1 +
+ Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png   | 1 +
+ Paper/48x48@2x/status/aptdaemon-add.png                  | 1 +
+ Paper/48x48@2x/status/aptdaemon-download.png             | 1 +
+ Paper/48x48@2x/status/feed-non-starred.png               | 1 +
+ Paper/48x48@2x/status/non-starred-grey.png               | 1 +
+ Paper/48x48@2x/status/pin-up.png                         | 1 +
+ Paper/48x48@2x/status/rating-unrated.png                 | 1 +
+ Paper/512x512/actions/mail-reply.png                     | 1 +
+ Paper/512x512/apps/QtProject-linguist.png                | 1 +
+ Paper/512x512/apps/linguist-qt4.png                      | 1 +
+ Paper/512x512/apps/linguist.png                          | 1 +
+ Paper/512x512/apps/linphone.png                          | 1 +
+ Paper/512x512/apps/org.gnome.Terminal.png                | 1 +
+ Paper/512x512/apps/xsane.png                             | 1 +
+ Paper/512x512/mimetypes/application-illustrator.png      | 1 +
+ Paper/512x512/mimetypes/application-vnd.ms-access.png    | 1 +
+ Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png    | 1 +
+ Paper/512x512/status/aptdaemon-add.png                   | 1 +
+ Paper/512x512/status/aptdaemon-download.png              | 1 +
+ Paper/512x512/status/feed-non-starred.png                | 1 +
+ Paper/512x512/status/non-starred-grey.png                | 1 +
+ Paper/512x512/status/pin-up.png                          | 1 +
+ Paper/512x512/status/rating-unrated.png                  | 1 +
+ Paper/512x512@2x/actions/mail-reply.png                  | 1 +
+ Paper/512x512@2x/apps/QtProject-linguist.png             | 1 +
+ Paper/512x512@2x/apps/linguist-qt4.png                   | 1 +
+ Paper/512x512@2x/apps/linguist.png                       | 1 +
+ Paper/512x512@2x/apps/linphone.png                       | 1 +
+ Paper/512x512@2x/apps/org.gnome.Terminal.png             | 1 +
+ Paper/512x512@2x/apps/xsane.png                          | 1 +
+ Paper/512x512@2x/mimetypes/application-illustrator.png   | 1 +
+ Paper/512x512@2x/mimetypes/application-vnd.ms-access.png | 1 +
+ Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png | 1 +
+ Paper/512x512@2x/status/aptdaemon-add.png                | 1 +
+ Paper/512x512@2x/status/aptdaemon-download.png           | 1 +
+ Paper/512x512@2x/status/feed-non-starred.png             | 1 +
+ Paper/512x512@2x/status/non-starred-grey.png             | 1 +
+ Paper/512x512@2x/status/pin-up.png                       | 1 +
+ Paper/512x512@2x/status/rating-unrated.png               | 1 +
+ 160 files changed, 160 insertions(+)
+ create mode 120000 Paper/16x16/actions/mail-reply.png
+ create mode 120000 Paper/16x16/apps/QtProject-linguist.png
+ create mode 120000 Paper/16x16/apps/linguist-qt4.png
+ create mode 120000 Paper/16x16/apps/linguist.png
+ create mode 120000 Paper/16x16/apps/linphone.png
+ create mode 120000 Paper/16x16/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/16x16/apps/xsane.png
+ create mode 120000 Paper/16x16/mimetypes/application-illustrator.png
+ create mode 120000 Paper/16x16/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/16x16/status/aptdaemon-add.png
+ create mode 120000 Paper/16x16/status/aptdaemon-download.png
+ create mode 120000 Paper/16x16/status/feed-non-starred.png
+ create mode 120000 Paper/16x16/status/non-starred-grey.png
+ create mode 120000 Paper/16x16/status/pin-up.png
+ create mode 120000 Paper/16x16/status/rating-unrated.png
+ create mode 120000 Paper/16x16@2x/actions/mail-reply.png
+ create mode 120000 Paper/16x16@2x/apps/QtProject-linguist.png
+ create mode 120000 Paper/16x16@2x/apps/linguist-qt4.png
+ create mode 120000 Paper/16x16@2x/apps/linguist.png
+ create mode 120000 Paper/16x16@2x/apps/linphone.png
+ create mode 120000 Paper/16x16@2x/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/16x16@2x/apps/xsane.png
+ create mode 120000 Paper/16x16@2x/mimetypes/application-illustrator.png
+ create mode 120000 Paper/16x16@2x/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/16x16@2x/status/aptdaemon-add.png
+ create mode 120000 Paper/16x16@2x/status/aptdaemon-download.png
+ create mode 120000 Paper/16x16@2x/status/feed-non-starred.png
+ create mode 120000 Paper/16x16@2x/status/non-starred-grey.png
+ create mode 120000 Paper/16x16@2x/status/pin-up.png
+ create mode 120000 Paper/16x16@2x/status/rating-unrated.png
+ create mode 120000 Paper/24x24/actions/mail-reply.png
+ create mode 120000 Paper/24x24/apps/QtProject-linguist.png
+ create mode 120000 Paper/24x24/apps/linguist-qt4.png
+ create mode 120000 Paper/24x24/apps/linguist.png
+ create mode 120000 Paper/24x24/apps/linphone.png
+ create mode 120000 Paper/24x24/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/24x24/apps/xsane.png
+ create mode 120000 Paper/24x24/mimetypes/application-illustrator.png
+ create mode 120000 Paper/24x24/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/24x24/status/aptdaemon-add.png
+ create mode 120000 Paper/24x24/status/aptdaemon-download.png
+ create mode 120000 Paper/24x24/status/feed-non-starred.png
+ create mode 120000 Paper/24x24/status/non-starred-grey.png
+ create mode 120000 Paper/24x24/status/pin-up.png
+ create mode 120000 Paper/24x24/status/rating-unrated.png
+ create mode 120000 Paper/24x24@2x/actions/mail-reply.png
+ create mode 120000 Paper/24x24@2x/apps/QtProject-linguist.png
+ create mode 120000 Paper/24x24@2x/apps/linguist-qt4.png
+ create mode 120000 Paper/24x24@2x/apps/linguist.png
+ create mode 120000 Paper/24x24@2x/apps/linphone.png
+ create mode 120000 Paper/24x24@2x/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/24x24@2x/apps/xsane.png
+ create mode 120000 Paper/24x24@2x/mimetypes/application-illustrator.png
+ create mode 120000 Paper/24x24@2x/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/24x24@2x/status/aptdaemon-add.png
+ create mode 120000 Paper/24x24@2x/status/aptdaemon-download.png
+ create mode 120000 Paper/24x24@2x/status/feed-non-starred.png
+ create mode 120000 Paper/24x24@2x/status/non-starred-grey.png
+ create mode 120000 Paper/24x24@2x/status/pin-up.png
+ create mode 120000 Paper/24x24@2x/status/rating-unrated.png
+ create mode 120000 Paper/32x32/actions/mail-reply.png
+ create mode 120000 Paper/32x32/apps/QtProject-linguist.png
+ create mode 120000 Paper/32x32/apps/linguist-qt4.png
+ create mode 120000 Paper/32x32/apps/linguist.png
+ create mode 120000 Paper/32x32/apps/linphone.png
+ create mode 120000 Paper/32x32/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/32x32/apps/xsane.png
+ create mode 120000 Paper/32x32/mimetypes/application-illustrator.png
+ create mode 120000 Paper/32x32/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/32x32/status/aptdaemon-add.png
+ create mode 120000 Paper/32x32/status/aptdaemon-download.png
+ create mode 120000 Paper/32x32/status/feed-non-starred.png
+ create mode 120000 Paper/32x32/status/non-starred-grey.png
+ create mode 120000 Paper/32x32/status/pin-up.png
+ create mode 120000 Paper/32x32/status/rating-unrated.png
+ create mode 120000 Paper/32x32@2x/actions/mail-reply.png
+ create mode 120000 Paper/32x32@2x/apps/QtProject-linguist.png
+ create mode 120000 Paper/32x32@2x/apps/linguist-qt4.png
+ create mode 120000 Paper/32x32@2x/apps/linguist.png
+ create mode 120000 Paper/32x32@2x/apps/linphone.png
+ create mode 120000 Paper/32x32@2x/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/32x32@2x/apps/xsane.png
+ create mode 120000 Paper/32x32@2x/mimetypes/application-illustrator.png
+ create mode 120000 Paper/32x32@2x/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/32x32@2x/status/aptdaemon-add.png
+ create mode 120000 Paper/32x32@2x/status/aptdaemon-download.png
+ create mode 120000 Paper/32x32@2x/status/feed-non-starred.png
+ create mode 120000 Paper/32x32@2x/status/non-starred-grey.png
+ create mode 120000 Paper/32x32@2x/status/pin-up.png
+ create mode 120000 Paper/32x32@2x/status/rating-unrated.png
+ create mode 120000 Paper/48x48/actions/mail-reply.png
+ create mode 120000 Paper/48x48/apps/QtProject-linguist.png
+ create mode 120000 Paper/48x48/apps/linguist-qt4.png
+ create mode 120000 Paper/48x48/apps/linguist.png
+ create mode 120000 Paper/48x48/apps/linphone.png
+ create mode 120000 Paper/48x48/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/48x48/apps/xsane.png
+ create mode 120000 Paper/48x48/mimetypes/application-illustrator.png
+ create mode 120000 Paper/48x48/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/48x48/status/aptdaemon-add.png
+ create mode 120000 Paper/48x48/status/aptdaemon-download.png
+ create mode 120000 Paper/48x48/status/feed-non-starred.png
+ create mode 120000 Paper/48x48/status/non-starred-grey.png
+ create mode 120000 Paper/48x48/status/pin-up.png
+ create mode 120000 Paper/48x48/status/rating-unrated.png
+ create mode 120000 Paper/48x48@2x/actions/mail-reply.png
+ create mode 120000 Paper/48x48@2x/apps/QtProject-linguist.png
+ create mode 120000 Paper/48x48@2x/apps/linguist-qt4.png
+ create mode 120000 Paper/48x48@2x/apps/linguist.png
+ create mode 120000 Paper/48x48@2x/apps/linphone.png
+ create mode 120000 Paper/48x48@2x/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/48x48@2x/apps/xsane.png
+ create mode 120000 Paper/48x48@2x/mimetypes/application-illustrator.png
+ create mode 120000 Paper/48x48@2x/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/48x48@2x/status/aptdaemon-add.png
+ create mode 120000 Paper/48x48@2x/status/aptdaemon-download.png
+ create mode 120000 Paper/48x48@2x/status/feed-non-starred.png
+ create mode 120000 Paper/48x48@2x/status/non-starred-grey.png
+ create mode 120000 Paper/48x48@2x/status/pin-up.png
+ create mode 120000 Paper/48x48@2x/status/rating-unrated.png
+ create mode 120000 Paper/512x512/actions/mail-reply.png
+ create mode 120000 Paper/512x512/apps/QtProject-linguist.png
+ create mode 120000 Paper/512x512/apps/linguist-qt4.png
+ create mode 120000 Paper/512x512/apps/linguist.png
+ create mode 120000 Paper/512x512/apps/linphone.png
+ create mode 120000 Paper/512x512/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/512x512/apps/xsane.png
+ create mode 120000 Paper/512x512/mimetypes/application-illustrator.png
+ create mode 120000 Paper/512x512/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/512x512/status/aptdaemon-add.png
+ create mode 120000 Paper/512x512/status/aptdaemon-download.png
+ create mode 120000 Paper/512x512/status/feed-non-starred.png
+ create mode 120000 Paper/512x512/status/non-starred-grey.png
+ create mode 120000 Paper/512x512/status/pin-up.png
+ create mode 120000 Paper/512x512/status/rating-unrated.png
+ create mode 120000 Paper/512x512@2x/actions/mail-reply.png
+ create mode 120000 Paper/512x512@2x/apps/QtProject-linguist.png
+ create mode 120000 Paper/512x512@2x/apps/linguist-qt4.png
+ create mode 120000 Paper/512x512@2x/apps/linguist.png
+ create mode 120000 Paper/512x512@2x/apps/linphone.png
+ create mode 120000 Paper/512x512@2x/apps/org.gnome.Terminal.png
+ create mode 120000 Paper/512x512@2x/apps/xsane.png
+ create mode 120000 Paper/512x512@2x/mimetypes/application-illustrator.png
+ create mode 120000 Paper/512x512@2x/mimetypes/application-vnd.ms-access.png
+ create mode 120000 Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png
+ create mode 120000 Paper/512x512@2x/status/aptdaemon-add.png
+ create mode 120000 Paper/512x512@2x/status/aptdaemon-download.png
+ create mode 120000 Paper/512x512@2x/status/feed-non-starred.png
+ create mode 120000 Paper/512x512@2x/status/non-starred-grey.png
+ create mode 120000 Paper/512x512@2x/status/pin-up.png
+ create mode 120000 Paper/512x512@2x/status/rating-unrated.png
+
+diff --git a/Paper/16x16/actions/mail-reply.png b/Paper/16x16/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/16x16/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/QtProject-linguist.png b/Paper/16x16/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/linguist-qt4.png b/Paper/16x16/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/linguist.png b/Paper/16x16/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/linphone.png b/Paper/16x16/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/16x16/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/org.gnome.Terminal.png b/Paper/16x16/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/16x16/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/16x16/apps/xsane.png b/Paper/16x16/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/16x16/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/16x16/mimetypes/application-illustrator.png b/Paper/16x16/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/16x16/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/16x16/mimetypes/application-vnd.ms-access.png b/Paper/16x16/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/16x16/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png b/Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/aptdaemon-add.png b/Paper/16x16/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/16x16/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/aptdaemon-download.png b/Paper/16x16/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/16x16/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/feed-non-starred.png b/Paper/16x16/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/non-starred-grey.png b/Paper/16x16/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/pin-up.png b/Paper/16x16/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16/status/rating-unrated.png b/Paper/16x16/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/actions/mail-reply.png b/Paper/16x16@2x/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/16x16@2x/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/QtProject-linguist.png b/Paper/16x16@2x/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16@2x/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/linguist-qt4.png b/Paper/16x16@2x/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16@2x/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/linguist.png b/Paper/16x16@2x/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/16x16@2x/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/linphone.png b/Paper/16x16@2x/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/16x16@2x/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/org.gnome.Terminal.png b/Paper/16x16@2x/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/16x16@2x/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/xsane.png b/Paper/16x16@2x/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/16x16@2x/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/mimetypes/application-illustrator.png b/Paper/16x16@2x/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/16x16@2x/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/mimetypes/application-vnd.ms-access.png b/Paper/16x16@2x/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/16x16@2x/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png b/Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/aptdaemon-add.png b/Paper/16x16@2x/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/16x16@2x/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/aptdaemon-download.png b/Paper/16x16@2x/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/16x16@2x/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/feed-non-starred.png b/Paper/16x16@2x/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16@2x/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/non-starred-grey.png b/Paper/16x16@2x/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16@2x/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/pin-up.png b/Paper/16x16@2x/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16@2x/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/status/rating-unrated.png b/Paper/16x16@2x/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/16x16@2x/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24/actions/mail-reply.png b/Paper/24x24/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/24x24/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/QtProject-linguist.png b/Paper/24x24/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/linguist-qt4.png b/Paper/24x24/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/linguist.png b/Paper/24x24/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/linphone.png b/Paper/24x24/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/24x24/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/org.gnome.Terminal.png b/Paper/24x24/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/24x24/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/xsane.png b/Paper/24x24/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/24x24/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/24x24/mimetypes/application-illustrator.png b/Paper/24x24/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/24x24/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/24x24/mimetypes/application-vnd.ms-access.png b/Paper/24x24/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/24x24/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png b/Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/aptdaemon-add.png b/Paper/24x24/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/24x24/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/aptdaemon-download.png b/Paper/24x24/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/24x24/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/feed-non-starred.png b/Paper/24x24/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/non-starred-grey.png b/Paper/24x24/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/pin-up.png b/Paper/24x24/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24/status/rating-unrated.png b/Paper/24x24/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/actions/mail-reply.png b/Paper/24x24@2x/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/24x24@2x/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/QtProject-linguist.png b/Paper/24x24@2x/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24@2x/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/linguist-qt4.png b/Paper/24x24@2x/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24@2x/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/linguist.png b/Paper/24x24@2x/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/24x24@2x/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/linphone.png b/Paper/24x24@2x/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/24x24@2x/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/org.gnome.Terminal.png b/Paper/24x24@2x/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/24x24@2x/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/xsane.png b/Paper/24x24@2x/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/24x24@2x/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/mimetypes/application-illustrator.png b/Paper/24x24@2x/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/24x24@2x/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/mimetypes/application-vnd.ms-access.png b/Paper/24x24@2x/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/24x24@2x/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png b/Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/aptdaemon-add.png b/Paper/24x24@2x/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/24x24@2x/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/aptdaemon-download.png b/Paper/24x24@2x/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/24x24@2x/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/feed-non-starred.png b/Paper/24x24@2x/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24@2x/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/non-starred-grey.png b/Paper/24x24@2x/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24@2x/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/pin-up.png b/Paper/24x24@2x/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24@2x/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/status/rating-unrated.png b/Paper/24x24@2x/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/24x24@2x/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32/actions/mail-reply.png b/Paper/32x32/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/32x32/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/QtProject-linguist.png b/Paper/32x32/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/linguist-qt4.png b/Paper/32x32/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/linguist.png b/Paper/32x32/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/linphone.png b/Paper/32x32/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/32x32/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/org.gnome.Terminal.png b/Paper/32x32/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/32x32/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/xsane.png b/Paper/32x32/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/32x32/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/32x32/mimetypes/application-illustrator.png b/Paper/32x32/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/32x32/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/32x32/mimetypes/application-vnd.ms-access.png b/Paper/32x32/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/32x32/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png b/Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/aptdaemon-add.png b/Paper/32x32/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/32x32/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/aptdaemon-download.png b/Paper/32x32/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/32x32/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/feed-non-starred.png b/Paper/32x32/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/non-starred-grey.png b/Paper/32x32/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/pin-up.png b/Paper/32x32/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32/status/rating-unrated.png b/Paper/32x32/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/actions/mail-reply.png b/Paper/32x32@2x/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/32x32@2x/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/QtProject-linguist.png b/Paper/32x32@2x/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32@2x/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/linguist-qt4.png b/Paper/32x32@2x/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32@2x/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/linguist.png b/Paper/32x32@2x/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/32x32@2x/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/linphone.png b/Paper/32x32@2x/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/32x32@2x/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/org.gnome.Terminal.png b/Paper/32x32@2x/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/32x32@2x/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/xsane.png b/Paper/32x32@2x/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/32x32@2x/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/mimetypes/application-illustrator.png b/Paper/32x32@2x/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/32x32@2x/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/mimetypes/application-vnd.ms-access.png b/Paper/32x32@2x/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/32x32@2x/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png b/Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/aptdaemon-add.png b/Paper/32x32@2x/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/32x32@2x/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/aptdaemon-download.png b/Paper/32x32@2x/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/32x32@2x/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/feed-non-starred.png b/Paper/32x32@2x/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32@2x/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/non-starred-grey.png b/Paper/32x32@2x/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32@2x/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/pin-up.png b/Paper/32x32@2x/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32@2x/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/status/rating-unrated.png b/Paper/32x32@2x/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/32x32@2x/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48/actions/mail-reply.png b/Paper/48x48/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/48x48/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/QtProject-linguist.png b/Paper/48x48/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/linguist-qt4.png b/Paper/48x48/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/linguist.png b/Paper/48x48/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/linphone.png b/Paper/48x48/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/48x48/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/org.gnome.Terminal.png b/Paper/48x48/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/48x48/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/xsane.png b/Paper/48x48/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/48x48/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/48x48/mimetypes/application-illustrator.png b/Paper/48x48/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/48x48/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/48x48/mimetypes/application-vnd.ms-access.png b/Paper/48x48/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/48x48/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png b/Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/aptdaemon-add.png b/Paper/48x48/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/48x48/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/aptdaemon-download.png b/Paper/48x48/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/48x48/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/feed-non-starred.png b/Paper/48x48/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/non-starred-grey.png b/Paper/48x48/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/pin-up.png b/Paper/48x48/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48/status/rating-unrated.png b/Paper/48x48/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/actions/mail-reply.png b/Paper/48x48@2x/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/48x48@2x/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/QtProject-linguist.png b/Paper/48x48@2x/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48@2x/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/linguist-qt4.png b/Paper/48x48@2x/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48@2x/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/linguist.png b/Paper/48x48@2x/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/48x48@2x/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/linphone.png b/Paper/48x48@2x/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/48x48@2x/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/org.gnome.Terminal.png b/Paper/48x48@2x/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/48x48@2x/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/xsane.png b/Paper/48x48@2x/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/48x48@2x/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/mimetypes/application-illustrator.png b/Paper/48x48@2x/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/48x48@2x/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/mimetypes/application-vnd.ms-access.png b/Paper/48x48@2x/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/48x48@2x/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png b/Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/aptdaemon-add.png b/Paper/48x48@2x/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/48x48@2x/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/aptdaemon-download.png b/Paper/48x48@2x/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/48x48@2x/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/feed-non-starred.png b/Paper/48x48@2x/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48@2x/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/non-starred-grey.png b/Paper/48x48@2x/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48@2x/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/pin-up.png b/Paper/48x48@2x/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48@2x/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/status/rating-unrated.png b/Paper/48x48@2x/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/48x48@2x/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512/actions/mail-reply.png b/Paper/512x512/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/512x512/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/QtProject-linguist.png b/Paper/512x512/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/linguist-qt4.png b/Paper/512x512/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/linguist.png b/Paper/512x512/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/linphone.png b/Paper/512x512/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/512x512/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/org.gnome.Terminal.png b/Paper/512x512/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/512x512/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/xsane.png b/Paper/512x512/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/512x512/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/512x512/mimetypes/application-illustrator.png b/Paper/512x512/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/512x512/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/512x512/mimetypes/application-vnd.ms-access.png b/Paper/512x512/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/512x512/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png b/Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/aptdaemon-add.png b/Paper/512x512/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/512x512/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/aptdaemon-download.png b/Paper/512x512/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/512x512/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/feed-non-starred.png b/Paper/512x512/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/non-starred-grey.png b/Paper/512x512/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/pin-up.png b/Paper/512x512/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512/status/rating-unrated.png b/Paper/512x512/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/actions/mail-reply.png b/Paper/512x512@2x/actions/mail-reply.png
+new file mode 120000
+index 0000000..a96d91f
+--- /dev/null
++++ b/Paper/512x512@2x/actions/mail-reply.png
+@@ -0,0 +1 @@
++mail-replied.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/QtProject-linguist.png b/Paper/512x512@2x/apps/QtProject-linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512@2x/apps/QtProject-linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/linguist-qt4.png b/Paper/512x512@2x/apps/linguist-qt4.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512@2x/apps/linguist-qt4.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/linguist.png b/Paper/512x512@2x/apps/linguist.png
+new file mode 120000
+index 0000000..13f8b54
+--- /dev/null
++++ b/Paper/512x512@2x/apps/linguist.png
+@@ -0,0 +1 @@
++qt-linguist.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/linphone.png b/Paper/512x512@2x/apps/linphone.png
+new file mode 120000
+index 0000000..fa41371
+--- /dev/null
++++ b/Paper/512x512@2x/apps/linphone.png
+@@ -0,0 +1 @@
++internet-telephony.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/org.gnome.Terminal.png b/Paper/512x512@2x/apps/org.gnome.Terminal.png
+new file mode 120000
+index 0000000..286627f
+--- /dev/null
++++ b/Paper/512x512@2x/apps/org.gnome.Terminal.png
+@@ -0,0 +1 @@
++utilities-terminal.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/xsane.png b/Paper/512x512@2x/apps/xsane.png
+new file mode 120000
+index 0000000..422abd8
+--- /dev/null
++++ b/Paper/512x512@2x/apps/xsane.png
+@@ -0,0 +1 @@
++simple-scan.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/mimetypes/application-illustrator.png b/Paper/512x512@2x/mimetypes/application-illustrator.png
+new file mode 120000
+index 0000000..87dd5c9
+--- /dev/null
++++ b/Paper/512x512@2x/mimetypes/application-illustrator.png
+@@ -0,0 +1 @@
++document-illustrator.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/mimetypes/application-vnd.ms-access.png b/Paper/512x512@2x/mimetypes/application-vnd.ms-access.png
+new file mode 120000
+index 0000000..10f0477
+--- /dev/null
++++ b/Paper/512x512@2x/mimetypes/application-vnd.ms-access.png
+@@ -0,0 +1 @@
++document-access.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png b/Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png
+new file mode 120000
+index 0000000..0fa6ae5
+--- /dev/null
++++ b/Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png
+@@ -0,0 +1 @@
++document-photoshop.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/aptdaemon-add.png b/Paper/512x512@2x/status/aptdaemon-add.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/512x512@2x/status/aptdaemon-add.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/aptdaemon-download.png b/Paper/512x512@2x/status/aptdaemon-download.png
+new file mode 120000
+index 0000000..a95846f
+--- /dev/null
++++ b/Paper/512x512@2x/status/aptdaemon-download.png
+@@ -0,0 +1 @@
++software-update-download.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/feed-non-starred.png b/Paper/512x512@2x/status/feed-non-starred.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512@2x/status/feed-non-starred.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/non-starred-grey.png b/Paper/512x512@2x/status/non-starred-grey.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512@2x/status/non-starred-grey.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/pin-up.png b/Paper/512x512@2x/status/pin-up.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512@2x/status/pin-up.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/status/rating-unrated.png b/Paper/512x512@2x/status/rating-unrated.png
+new file mode 120000
+index 0000000..74945ec
+--- /dev/null
++++ b/Paper/512x512@2x/status/rating-unrated.png
+@@ -0,0 +1 @@
++non-starred.png
+\ No newline at end of file
+-- 
+2.20.1
+

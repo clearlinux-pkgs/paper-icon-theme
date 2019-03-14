@@ -4,7 +4,7 @@
 #
 Name     : paper-icon-theme
 Version  : 1.5.0
-Release  : 3
+Release  : 4
 URL      : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Source0  : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Summary  : Paper Icon theme
@@ -14,6 +14,8 @@ Requires: paper-icon-theme-data = %{version}-%{release}
 Requires: paper-icon-theme-license = %{version}-%{release}
 BuildRequires : buildreq-meson
 BuildRequires : pkgconfig(gtk+-3.0)
+Patch1: 0001-Added-symlinks-for-Gnome-Terminal-3.31.90.patch
+Patch2: 0002-Rebuild-symlinks.patch
 
 %description
 Paper is simple and modern icon theme with material design influences.
@@ -36,13 +38,15 @@ license components for the paper-icon-theme package.
 
 %prep
 %setup -q -n paper-icon-theme-v.1.5.0
+%patch1 -p1
+%patch2 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551732278
+export SOURCE_DATE_EPOCH=1552563353
 export LDFLAGS="${LDFLAGS} -fno-lto"
 CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
 ninja -v -C builddir
@@ -2591,6 +2595,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/actions/mail-message-new.svg
 /usr/share/icons/Paper/16x16/actions/mail-reply-all-rtl.svg
 /usr/share/icons/Paper/16x16/actions/mail-reply-all.svg
+/usr/share/icons/Paper/16x16/actions/mail-reply.png
 /usr/share/icons/Paper/16x16/actions/mail-reply.svg
 /usr/share/icons/Paper/16x16/actions/mail-send-receive.png
 /usr/share/icons/Paper/16x16/actions/mail-send-receive.svg
@@ -2849,6 +2854,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/apps/QtIcon.png
 /usr/share/icons/Paper/16x16/apps/QtProject-assistant.png
 /usr/share/icons/Paper/16x16/apps/QtProject-designer.png
+/usr/share/icons/Paper/16x16/apps/QtProject-linguist.png
 /usr/share/icons/Paper/16x16/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/16x16/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/16x16/apps/Sci48M.png
@@ -3453,6 +3459,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/apps/libreoffice5.3.png
 /usr/share/icons/Paper/16x16/apps/liferea.png
 /usr/share/icons/Paper/16x16/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/16x16/apps/linguist-qt4.png
+/usr/share/icons/Paper/16x16/apps/linguist.png
+/usr/share/icons/Paper/16x16/apps/linphone.png
 /usr/share/icons/Paper/16x16/apps/linssid.png
 /usr/share/icons/Paper/16x16/apps/linssid32.png
 /usr/share/icons/Paper/16x16/apps/linssid48.png
@@ -3595,6 +3604,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/16x16/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/16x16/apps/org.gnome.Software.png
+/usr/share/icons/Paper/16x16/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/16x16/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/16x16/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/16x16/apps/org.gnome.Usage.png
@@ -3951,6 +3961,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/apps/xpdf.png
 /usr/share/icons/Paper/16x16/apps/xplayer.png
 /usr/share/icons/Paper/16x16/apps/xreader.png
+/usr/share/icons/Paper/16x16/apps/xsane.png
 /usr/share/icons/Paper/16x16/apps/xscreensaver.png
 /usr/share/icons/Paper/16x16/apps/xterm-color.png
 /usr/share/icons/Paper/16x16/apps/xterm-color_32x32.png
@@ -4218,6 +4229,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/16x16/mimetypes/application-archive.png
 /usr/share/icons/Paper/16x16/mimetypes/application-gzip.png
+/usr/share/icons/Paper/16x16/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/16x16/mimetypes/application-msword.png
 /usr/share/icons/Paper/16x16/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/16x16/mimetypes/application-ogg.png
@@ -4225,6 +4237,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/16x16/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/16x16/mimetypes/application-vnd.ms-powerpoint.png
@@ -4387,6 +4400,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/mimetypes/gnome-package.png
 /usr/share/icons/Paper/16x16/mimetypes/gtk-file.png
 /usr/share/icons/Paper/16x16/mimetypes/html.png
+/usr/share/icons/Paper/16x16/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/16x16/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/16x16/mimetypes/image.png
 /usr/share/icons/Paper/16x16/mimetypes/inode-directory.png
@@ -5069,7 +5083,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/places/xubuntu.png
 /usr/share/icons/Paper/16x16/status/appointment-missed.png
 /usr/share/icons/Paper/16x16/status/appointment-soon.png
+/usr/share/icons/Paper/16x16/status/aptdaemon-add.png
 /usr/share/icons/Paper/16x16/status/aptdaemon-delete.png
+/usr/share/icons/Paper/16x16/status/aptdaemon-download.png
 /usr/share/icons/Paper/16x16/status/aptdaemon-error.png
 /usr/share/icons/Paper/16x16/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/16x16/status/aptdaemon-upgrade.png
@@ -5121,6 +5137,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/status/edittrash.png
 /usr/share/icons/Paper/16x16/status/error.png
 /usr/share/icons/Paper/16x16/status/extended-away.png
+/usr/share/icons/Paper/16x16/status/feed-non-starred.png
 /usr/share/icons/Paper/16x16/status/feed-starred.png
 /usr/share/icons/Paper/16x16/status/folder-drag-accept.png
 /usr/share/icons/Paper/16x16/status/folder-open.png
@@ -5189,13 +5206,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16/status/nm-device-wired.png
 /usr/share/icons/Paper/16x16/status/nm-device-wireless.png
 /usr/share/icons/Paper/16x16/status/nm-no-connection.png
+/usr/share/icons/Paper/16x16/status/non-starred-grey.png
 /usr/share/icons/Paper/16x16/status/object-locked.png
 /usr/share/icons/Paper/16x16/status/object-unlocked.png
 /usr/share/icons/Paper/16x16/status/person.png
 /usr/share/icons/Paper/16x16/status/pin-down.png
+/usr/share/icons/Paper/16x16/status/pin-up.png
 /usr/share/icons/Paper/16x16/status/printer-error.png
 /usr/share/icons/Paper/16x16/status/printer-info.png
 /usr/share/icons/Paper/16x16/status/printer-printing.png
+/usr/share/icons/Paper/16x16/status/rating-unrated.png
 /usr/share/icons/Paper/16x16/status/security-high.png
 /usr/share/icons/Paper/16x16/status/security-low.png
 /usr/share/icons/Paper/16x16/status/security-medium.png
@@ -5440,6 +5460,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/actions/mail-mark-important.png
 /usr/share/icons/Paper/16x16@2x/actions/mail-mark-junk.png
 /usr/share/icons/Paper/16x16@2x/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/16x16@2x/actions/mail-reply.png
 /usr/share/icons/Paper/16x16@2x/actions/mail-send-receive.png
 /usr/share/icons/Paper/16x16@2x/actions/mail_spam.png
 /usr/share/icons/Paper/16x16@2x/actions/next.png
@@ -5507,6 +5528,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/apps/QtIcon.png
 /usr/share/icons/Paper/16x16@2x/apps/QtProject-assistant.png
 /usr/share/icons/Paper/16x16@2x/apps/QtProject-designer.png
+/usr/share/icons/Paper/16x16@2x/apps/QtProject-linguist.png
 /usr/share/icons/Paper/16x16@2x/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/16x16@2x/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/16x16@2x/apps/Sci48M.png
@@ -6111,6 +6133,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/apps/libreoffice5.3.png
 /usr/share/icons/Paper/16x16@2x/apps/liferea.png
 /usr/share/icons/Paper/16x16@2x/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/16x16@2x/apps/linguist-qt4.png
+/usr/share/icons/Paper/16x16@2x/apps/linguist.png
+/usr/share/icons/Paper/16x16@2x/apps/linphone.png
 /usr/share/icons/Paper/16x16@2x/apps/linssid.png
 /usr/share/icons/Paper/16x16@2x/apps/linssid32.png
 /usr/share/icons/Paper/16x16@2x/apps/linssid48.png
@@ -6253,6 +6278,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.Software.png
+/usr/share/icons/Paper/16x16@2x/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/16x16@2x/apps/org.gnome.Usage.png
@@ -6609,6 +6635,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/apps/xpdf.png
 /usr/share/icons/Paper/16x16@2x/apps/xplayer.png
 /usr/share/icons/Paper/16x16@2x/apps/xreader.png
+/usr/share/icons/Paper/16x16@2x/apps/xsane.png
 /usr/share/icons/Paper/16x16@2x/apps/xscreensaver.png
 /usr/share/icons/Paper/16x16@2x/apps/xterm-color.png
 /usr/share/icons/Paper/16x16@2x/apps/xterm-color_32x32.png
@@ -6875,6 +6902,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-archive.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-gzip.png
+/usr/share/icons/Paper/16x16@2x/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-msword.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-ogg.png
@@ -6882,6 +6910,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/application-vnd.ms-powerpoint.png
@@ -7044,6 +7073,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/mimetypes/gnome-package.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/gtk-file.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/html.png
+/usr/share/icons/Paper/16x16@2x/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/image.png
 /usr/share/icons/Paper/16x16@2x/mimetypes/inode-directory.png
@@ -7293,7 +7323,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/places/xubuntu.png
 /usr/share/icons/Paper/16x16@2x/status/appointment-missed.png
 /usr/share/icons/Paper/16x16@2x/status/appointment-soon.png
+/usr/share/icons/Paper/16x16@2x/status/aptdaemon-add.png
 /usr/share/icons/Paper/16x16@2x/status/aptdaemon-delete.png
+/usr/share/icons/Paper/16x16@2x/status/aptdaemon-download.png
 /usr/share/icons/Paper/16x16@2x/status/aptdaemon-error.png
 /usr/share/icons/Paper/16x16@2x/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/16x16@2x/status/aptdaemon-upgrade.png
@@ -7345,6 +7377,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/status/edittrash.png
 /usr/share/icons/Paper/16x16@2x/status/error.png
 /usr/share/icons/Paper/16x16@2x/status/extended-away.png
+/usr/share/icons/Paper/16x16@2x/status/feed-non-starred.png
 /usr/share/icons/Paper/16x16@2x/status/feed-starred.png
 /usr/share/icons/Paper/16x16@2x/status/folder-drag-accept.png
 /usr/share/icons/Paper/16x16@2x/status/folder-open.png
@@ -7404,13 +7437,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/16x16@2x/status/nm-device-wired.png
 /usr/share/icons/Paper/16x16@2x/status/nm-device-wireless.png
 /usr/share/icons/Paper/16x16@2x/status/nm-no-connection.png
+/usr/share/icons/Paper/16x16@2x/status/non-starred-grey.png
 /usr/share/icons/Paper/16x16@2x/status/object-locked.png
 /usr/share/icons/Paper/16x16@2x/status/object-unlocked.png
 /usr/share/icons/Paper/16x16@2x/status/person.png
 /usr/share/icons/Paper/16x16@2x/status/pin-down.png
+/usr/share/icons/Paper/16x16@2x/status/pin-up.png
 /usr/share/icons/Paper/16x16@2x/status/printer-error.png
 /usr/share/icons/Paper/16x16@2x/status/printer-info.png
 /usr/share/icons/Paper/16x16@2x/status/printer-printing.png
+/usr/share/icons/Paper/16x16@2x/status/rating-unrated.png
 /usr/share/icons/Paper/16x16@2x/status/security-high.png
 /usr/share/icons/Paper/16x16@2x/status/security-low.png
 /usr/share/icons/Paper/16x16@2x/status/security-medium.png
@@ -8782,6 +8818,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/actions/mail-mark-important.png
 /usr/share/icons/Paper/24x24/actions/mail-mark-junk.png
 /usr/share/icons/Paper/24x24/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/24x24/actions/mail-reply.png
 /usr/share/icons/Paper/24x24/actions/mail-send-receive.png
 /usr/share/icons/Paper/24x24/actions/mail_spam.png
 /usr/share/icons/Paper/24x24/actions/next.png
@@ -8903,6 +8940,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/apps/QtIcon.png
 /usr/share/icons/Paper/24x24/apps/QtProject-assistant.png
 /usr/share/icons/Paper/24x24/apps/QtProject-designer.png
+/usr/share/icons/Paper/24x24/apps/QtProject-linguist.png
 /usr/share/icons/Paper/24x24/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/24x24/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/24x24/apps/Sci48M.png
@@ -9507,6 +9545,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/apps/libreoffice5.3.png
 /usr/share/icons/Paper/24x24/apps/liferea.png
 /usr/share/icons/Paper/24x24/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/24x24/apps/linguist-qt4.png
+/usr/share/icons/Paper/24x24/apps/linguist.png
+/usr/share/icons/Paper/24x24/apps/linphone.png
 /usr/share/icons/Paper/24x24/apps/linssid.png
 /usr/share/icons/Paper/24x24/apps/linssid32.png
 /usr/share/icons/Paper/24x24/apps/linssid48.png
@@ -9649,6 +9690,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/24x24/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/24x24/apps/org.gnome.Software.png
+/usr/share/icons/Paper/24x24/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/24x24/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/24x24/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/24x24/apps/org.gnome.Usage.png
@@ -10005,6 +10047,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/apps/xpdf.png
 /usr/share/icons/Paper/24x24/apps/xplayer.png
 /usr/share/icons/Paper/24x24/apps/xreader.png
+/usr/share/icons/Paper/24x24/apps/xsane.png
 /usr/share/icons/Paper/24x24/apps/xscreensaver.png
 /usr/share/icons/Paper/24x24/apps/xterm-color.png
 /usr/share/icons/Paper/24x24/apps/xterm-color_32x32.png
@@ -10272,6 +10315,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/24x24/mimetypes/application-archive.png
 /usr/share/icons/Paper/24x24/mimetypes/application-gzip.png
+/usr/share/icons/Paper/24x24/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/24x24/mimetypes/application-msword.png
 /usr/share/icons/Paper/24x24/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/24x24/mimetypes/application-ogg.png
@@ -10279,6 +10323,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/24x24/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/24x24/mimetypes/application-vnd.ms-powerpoint.png
@@ -10441,6 +10486,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/mimetypes/gnome-package.png
 /usr/share/icons/Paper/24x24/mimetypes/gtk-file.png
 /usr/share/icons/Paper/24x24/mimetypes/html.png
+/usr/share/icons/Paper/24x24/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/24x24/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/24x24/mimetypes/image.png
 /usr/share/icons/Paper/24x24/mimetypes/inode-directory.png
@@ -11768,7 +11814,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/places/xubuntu.png
 /usr/share/icons/Paper/24x24/status/appointment-missed.png
 /usr/share/icons/Paper/24x24/status/appointment-soon.png
+/usr/share/icons/Paper/24x24/status/aptdaemon-add.png
 /usr/share/icons/Paper/24x24/status/aptdaemon-delete.png
+/usr/share/icons/Paper/24x24/status/aptdaemon-download.png
 /usr/share/icons/Paper/24x24/status/aptdaemon-error.png
 /usr/share/icons/Paper/24x24/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/24x24/status/aptdaemon-upgrade.png
@@ -11820,6 +11868,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/status/edittrash.png
 /usr/share/icons/Paper/24x24/status/error.png
 /usr/share/icons/Paper/24x24/status/extended-away.png
+/usr/share/icons/Paper/24x24/status/feed-non-starred.png
 /usr/share/icons/Paper/24x24/status/feed-starred.png
 /usr/share/icons/Paper/24x24/status/folder-drag-accept.png
 /usr/share/icons/Paper/24x24/status/folder-open.png
@@ -11879,13 +11928,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24/status/nm-device-wired.png
 /usr/share/icons/Paper/24x24/status/nm-device-wireless.png
 /usr/share/icons/Paper/24x24/status/nm-no-connection.png
+/usr/share/icons/Paper/24x24/status/non-starred-grey.png
 /usr/share/icons/Paper/24x24/status/object-locked.png
 /usr/share/icons/Paper/24x24/status/object-unlocked.png
 /usr/share/icons/Paper/24x24/status/person.png
 /usr/share/icons/Paper/24x24/status/pin-down.png
+/usr/share/icons/Paper/24x24/status/pin-up.png
 /usr/share/icons/Paper/24x24/status/printer-error.png
 /usr/share/icons/Paper/24x24/status/printer-info.png
 /usr/share/icons/Paper/24x24/status/printer-printing.png
+/usr/share/icons/Paper/24x24/status/rating-unrated.png
 /usr/share/icons/Paper/24x24/status/security-high.png
 /usr/share/icons/Paper/24x24/status/security-low.png
 /usr/share/icons/Paper/24x24/status/security-medium.png
@@ -12126,6 +12178,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/actions/mail-mark-important.png
 /usr/share/icons/Paper/24x24@2x/actions/mail-mark-junk.png
 /usr/share/icons/Paper/24x24@2x/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/24x24@2x/actions/mail-reply.png
 /usr/share/icons/Paper/24x24@2x/actions/mail-send-receive.png
 /usr/share/icons/Paper/24x24@2x/actions/mail_spam.png
 /usr/share/icons/Paper/24x24@2x/actions/next.png
@@ -12193,6 +12246,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/apps/QtIcon.png
 /usr/share/icons/Paper/24x24@2x/apps/QtProject-assistant.png
 /usr/share/icons/Paper/24x24@2x/apps/QtProject-designer.png
+/usr/share/icons/Paper/24x24@2x/apps/QtProject-linguist.png
 /usr/share/icons/Paper/24x24@2x/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/24x24@2x/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/24x24@2x/apps/Sci48M.png
@@ -12797,6 +12851,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/apps/libreoffice5.3.png
 /usr/share/icons/Paper/24x24@2x/apps/liferea.png
 /usr/share/icons/Paper/24x24@2x/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/24x24@2x/apps/linguist-qt4.png
+/usr/share/icons/Paper/24x24@2x/apps/linguist.png
+/usr/share/icons/Paper/24x24@2x/apps/linphone.png
 /usr/share/icons/Paper/24x24@2x/apps/linssid.png
 /usr/share/icons/Paper/24x24@2x/apps/linssid32.png
 /usr/share/icons/Paper/24x24@2x/apps/linssid48.png
@@ -12939,6 +12996,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.Software.png
+/usr/share/icons/Paper/24x24@2x/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/24x24@2x/apps/org.gnome.Usage.png
@@ -13295,6 +13353,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/apps/xpdf.png
 /usr/share/icons/Paper/24x24@2x/apps/xplayer.png
 /usr/share/icons/Paper/24x24@2x/apps/xreader.png
+/usr/share/icons/Paper/24x24@2x/apps/xsane.png
 /usr/share/icons/Paper/24x24@2x/apps/xscreensaver.png
 /usr/share/icons/Paper/24x24@2x/apps/xterm-color.png
 /usr/share/icons/Paper/24x24@2x/apps/xterm-color_32x32.png
@@ -13561,6 +13620,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-archive.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-gzip.png
+/usr/share/icons/Paper/24x24@2x/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-msword.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-ogg.png
@@ -13568,6 +13628,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/application-vnd.ms-powerpoint.png
@@ -13730,6 +13791,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/mimetypes/gnome-package.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/gtk-file.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/html.png
+/usr/share/icons/Paper/24x24@2x/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/image.png
 /usr/share/icons/Paper/24x24@2x/mimetypes/inode-directory.png
@@ -13979,7 +14041,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/places/xubuntu.png
 /usr/share/icons/Paper/24x24@2x/status/appointment-missed.png
 /usr/share/icons/Paper/24x24@2x/status/appointment-soon.png
+/usr/share/icons/Paper/24x24@2x/status/aptdaemon-add.png
 /usr/share/icons/Paper/24x24@2x/status/aptdaemon-delete.png
+/usr/share/icons/Paper/24x24@2x/status/aptdaemon-download.png
 /usr/share/icons/Paper/24x24@2x/status/aptdaemon-error.png
 /usr/share/icons/Paper/24x24@2x/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/24x24@2x/status/aptdaemon-upgrade.png
@@ -14031,6 +14095,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/status/edittrash.png
 /usr/share/icons/Paper/24x24@2x/status/error.png
 /usr/share/icons/Paper/24x24@2x/status/extended-away.png
+/usr/share/icons/Paper/24x24@2x/status/feed-non-starred.png
 /usr/share/icons/Paper/24x24@2x/status/feed-starred.png
 /usr/share/icons/Paper/24x24@2x/status/folder-drag-accept.png
 /usr/share/icons/Paper/24x24@2x/status/folder-open.png
@@ -14090,13 +14155,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/24x24@2x/status/nm-device-wired.png
 /usr/share/icons/Paper/24x24@2x/status/nm-device-wireless.png
 /usr/share/icons/Paper/24x24@2x/status/nm-no-connection.png
+/usr/share/icons/Paper/24x24@2x/status/non-starred-grey.png
 /usr/share/icons/Paper/24x24@2x/status/object-locked.png
 /usr/share/icons/Paper/24x24@2x/status/object-unlocked.png
 /usr/share/icons/Paper/24x24@2x/status/person.png
 /usr/share/icons/Paper/24x24@2x/status/pin-down.png
+/usr/share/icons/Paper/24x24@2x/status/pin-up.png
 /usr/share/icons/Paper/24x24@2x/status/printer-error.png
 /usr/share/icons/Paper/24x24@2x/status/printer-info.png
 /usr/share/icons/Paper/24x24@2x/status/printer-printing.png
+/usr/share/icons/Paper/24x24@2x/status/rating-unrated.png
 /usr/share/icons/Paper/24x24@2x/status/security-high.png
 /usr/share/icons/Paper/24x24@2x/status/security-low.png
 /usr/share/icons/Paper/24x24@2x/status/security-medium.png
@@ -14337,6 +14405,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/actions/mail-mark-important.png
 /usr/share/icons/Paper/32x32/actions/mail-mark-junk.png
 /usr/share/icons/Paper/32x32/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/32x32/actions/mail-reply.png
 /usr/share/icons/Paper/32x32/actions/mail-send-receive.png
 /usr/share/icons/Paper/32x32/actions/mail_spam.png
 /usr/share/icons/Paper/32x32/actions/next.png
@@ -14404,6 +14473,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/apps/QtIcon.png
 /usr/share/icons/Paper/32x32/apps/QtProject-assistant.png
 /usr/share/icons/Paper/32x32/apps/QtProject-designer.png
+/usr/share/icons/Paper/32x32/apps/QtProject-linguist.png
 /usr/share/icons/Paper/32x32/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/32x32/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/32x32/apps/Sci48M.png
@@ -15008,6 +15078,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/apps/libreoffice5.3.png
 /usr/share/icons/Paper/32x32/apps/liferea.png
 /usr/share/icons/Paper/32x32/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/32x32/apps/linguist-qt4.png
+/usr/share/icons/Paper/32x32/apps/linguist.png
+/usr/share/icons/Paper/32x32/apps/linphone.png
 /usr/share/icons/Paper/32x32/apps/linssid.png
 /usr/share/icons/Paper/32x32/apps/linssid32.png
 /usr/share/icons/Paper/32x32/apps/linssid48.png
@@ -15150,6 +15223,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/32x32/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/32x32/apps/org.gnome.Software.png
+/usr/share/icons/Paper/32x32/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/32x32/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/32x32/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/32x32/apps/org.gnome.Usage.png
@@ -15506,6 +15580,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/apps/xpdf.png
 /usr/share/icons/Paper/32x32/apps/xplayer.png
 /usr/share/icons/Paper/32x32/apps/xreader.png
+/usr/share/icons/Paper/32x32/apps/xsane.png
 /usr/share/icons/Paper/32x32/apps/xscreensaver.png
 /usr/share/icons/Paper/32x32/apps/xterm-color.png
 /usr/share/icons/Paper/32x32/apps/xterm-color_32x32.png
@@ -15772,6 +15847,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/32x32/mimetypes/application-archive.png
 /usr/share/icons/Paper/32x32/mimetypes/application-gzip.png
+/usr/share/icons/Paper/32x32/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/32x32/mimetypes/application-msword.png
 /usr/share/icons/Paper/32x32/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/32x32/mimetypes/application-ogg.png
@@ -15779,6 +15855,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/32x32/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/32x32/mimetypes/application-vnd.ms-powerpoint.png
@@ -15941,6 +16018,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/mimetypes/gnome-package.png
 /usr/share/icons/Paper/32x32/mimetypes/gtk-file.png
 /usr/share/icons/Paper/32x32/mimetypes/html.png
+/usr/share/icons/Paper/32x32/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/32x32/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/32x32/mimetypes/image.png
 /usr/share/icons/Paper/32x32/mimetypes/inode-directory.png
@@ -16190,7 +16268,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/places/xubuntu.png
 /usr/share/icons/Paper/32x32/status/appointment-missed.png
 /usr/share/icons/Paper/32x32/status/appointment-soon.png
+/usr/share/icons/Paper/32x32/status/aptdaemon-add.png
 /usr/share/icons/Paper/32x32/status/aptdaemon-delete.png
+/usr/share/icons/Paper/32x32/status/aptdaemon-download.png
 /usr/share/icons/Paper/32x32/status/aptdaemon-error.png
 /usr/share/icons/Paper/32x32/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/32x32/status/aptdaemon-upgrade.png
@@ -16242,6 +16322,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/status/edittrash.png
 /usr/share/icons/Paper/32x32/status/error.png
 /usr/share/icons/Paper/32x32/status/extended-away.png
+/usr/share/icons/Paper/32x32/status/feed-non-starred.png
 /usr/share/icons/Paper/32x32/status/feed-starred.png
 /usr/share/icons/Paper/32x32/status/folder-drag-accept.png
 /usr/share/icons/Paper/32x32/status/folder-open.png
@@ -16301,13 +16382,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32/status/nm-device-wired.png
 /usr/share/icons/Paper/32x32/status/nm-device-wireless.png
 /usr/share/icons/Paper/32x32/status/nm-no-connection.png
+/usr/share/icons/Paper/32x32/status/non-starred-grey.png
 /usr/share/icons/Paper/32x32/status/object-locked.png
 /usr/share/icons/Paper/32x32/status/object-unlocked.png
 /usr/share/icons/Paper/32x32/status/person.png
 /usr/share/icons/Paper/32x32/status/pin-down.png
+/usr/share/icons/Paper/32x32/status/pin-up.png
 /usr/share/icons/Paper/32x32/status/printer-error.png
 /usr/share/icons/Paper/32x32/status/printer-info.png
 /usr/share/icons/Paper/32x32/status/printer-printing.png
+/usr/share/icons/Paper/32x32/status/rating-unrated.png
 /usr/share/icons/Paper/32x32/status/security-high.png
 /usr/share/icons/Paper/32x32/status/security-low.png
 /usr/share/icons/Paper/32x32/status/security-medium.png
@@ -16548,6 +16632,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/actions/mail-mark-important.png
 /usr/share/icons/Paper/32x32@2x/actions/mail-mark-junk.png
 /usr/share/icons/Paper/32x32@2x/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/32x32@2x/actions/mail-reply.png
 /usr/share/icons/Paper/32x32@2x/actions/mail-send-receive.png
 /usr/share/icons/Paper/32x32@2x/actions/mail_spam.png
 /usr/share/icons/Paper/32x32@2x/actions/next.png
@@ -16615,6 +16700,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/apps/QtIcon.png
 /usr/share/icons/Paper/32x32@2x/apps/QtProject-assistant.png
 /usr/share/icons/Paper/32x32@2x/apps/QtProject-designer.png
+/usr/share/icons/Paper/32x32@2x/apps/QtProject-linguist.png
 /usr/share/icons/Paper/32x32@2x/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/32x32@2x/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/32x32@2x/apps/Sci48M.png
@@ -17219,6 +17305,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/apps/libreoffice5.3.png
 /usr/share/icons/Paper/32x32@2x/apps/liferea.png
 /usr/share/icons/Paper/32x32@2x/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/32x32@2x/apps/linguist-qt4.png
+/usr/share/icons/Paper/32x32@2x/apps/linguist.png
+/usr/share/icons/Paper/32x32@2x/apps/linphone.png
 /usr/share/icons/Paper/32x32@2x/apps/linssid.png
 /usr/share/icons/Paper/32x32@2x/apps/linssid32.png
 /usr/share/icons/Paper/32x32@2x/apps/linssid48.png
@@ -17361,6 +17450,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.Software.png
+/usr/share/icons/Paper/32x32@2x/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/32x32@2x/apps/org.gnome.Usage.png
@@ -17717,6 +17807,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/apps/xpdf.png
 /usr/share/icons/Paper/32x32@2x/apps/xplayer.png
 /usr/share/icons/Paper/32x32@2x/apps/xreader.png
+/usr/share/icons/Paper/32x32@2x/apps/xsane.png
 /usr/share/icons/Paper/32x32@2x/apps/xscreensaver.png
 /usr/share/icons/Paper/32x32@2x/apps/xterm-color.png
 /usr/share/icons/Paper/32x32@2x/apps/xterm-color_32x32.png
@@ -17983,6 +18074,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-archive.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-gzip.png
+/usr/share/icons/Paper/32x32@2x/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-msword.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-ogg.png
@@ -17990,6 +18082,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/application-vnd.ms-powerpoint.png
@@ -18152,6 +18245,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/mimetypes/gnome-package.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/gtk-file.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/html.png
+/usr/share/icons/Paper/32x32@2x/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/image.png
 /usr/share/icons/Paper/32x32@2x/mimetypes/inode-directory.png
@@ -18401,7 +18495,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/places/xubuntu.png
 /usr/share/icons/Paper/32x32@2x/status/appointment-missed.png
 /usr/share/icons/Paper/32x32@2x/status/appointment-soon.png
+/usr/share/icons/Paper/32x32@2x/status/aptdaemon-add.png
 /usr/share/icons/Paper/32x32@2x/status/aptdaemon-delete.png
+/usr/share/icons/Paper/32x32@2x/status/aptdaemon-download.png
 /usr/share/icons/Paper/32x32@2x/status/aptdaemon-error.png
 /usr/share/icons/Paper/32x32@2x/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/32x32@2x/status/aptdaemon-upgrade.png
@@ -18453,6 +18549,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/status/edittrash.png
 /usr/share/icons/Paper/32x32@2x/status/error.png
 /usr/share/icons/Paper/32x32@2x/status/extended-away.png
+/usr/share/icons/Paper/32x32@2x/status/feed-non-starred.png
 /usr/share/icons/Paper/32x32@2x/status/feed-starred.png
 /usr/share/icons/Paper/32x32@2x/status/folder-drag-accept.png
 /usr/share/icons/Paper/32x32@2x/status/folder-open.png
@@ -18512,13 +18609,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/32x32@2x/status/nm-device-wired.png
 /usr/share/icons/Paper/32x32@2x/status/nm-device-wireless.png
 /usr/share/icons/Paper/32x32@2x/status/nm-no-connection.png
+/usr/share/icons/Paper/32x32@2x/status/non-starred-grey.png
 /usr/share/icons/Paper/32x32@2x/status/object-locked.png
 /usr/share/icons/Paper/32x32@2x/status/object-unlocked.png
 /usr/share/icons/Paper/32x32@2x/status/person.png
 /usr/share/icons/Paper/32x32@2x/status/pin-down.png
+/usr/share/icons/Paper/32x32@2x/status/pin-up.png
 /usr/share/icons/Paper/32x32@2x/status/printer-error.png
 /usr/share/icons/Paper/32x32@2x/status/printer-info.png
 /usr/share/icons/Paper/32x32@2x/status/printer-printing.png
+/usr/share/icons/Paper/32x32@2x/status/rating-unrated.png
 /usr/share/icons/Paper/32x32@2x/status/security-high.png
 /usr/share/icons/Paper/32x32@2x/status/security-low.png
 /usr/share/icons/Paper/32x32@2x/status/security-medium.png
@@ -18759,6 +18859,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/actions/mail-mark-important.png
 /usr/share/icons/Paper/48x48/actions/mail-mark-junk.png
 /usr/share/icons/Paper/48x48/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/48x48/actions/mail-reply.png
 /usr/share/icons/Paper/48x48/actions/mail-send-receive.png
 /usr/share/icons/Paper/48x48/actions/mail_spam.png
 /usr/share/icons/Paper/48x48/actions/next.png
@@ -18826,6 +18927,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/apps/QtIcon.png
 /usr/share/icons/Paper/48x48/apps/QtProject-assistant.png
 /usr/share/icons/Paper/48x48/apps/QtProject-designer.png
+/usr/share/icons/Paper/48x48/apps/QtProject-linguist.png
 /usr/share/icons/Paper/48x48/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/48x48/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/48x48/apps/Sci48M.png
@@ -19430,6 +19532,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/apps/libreoffice5.3.png
 /usr/share/icons/Paper/48x48/apps/liferea.png
 /usr/share/icons/Paper/48x48/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/48x48/apps/linguist-qt4.png
+/usr/share/icons/Paper/48x48/apps/linguist.png
+/usr/share/icons/Paper/48x48/apps/linphone.png
 /usr/share/icons/Paper/48x48/apps/linssid.png
 /usr/share/icons/Paper/48x48/apps/linssid32.png
 /usr/share/icons/Paper/48x48/apps/linssid48.png
@@ -19572,6 +19677,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/48x48/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/48x48/apps/org.gnome.Software.png
+/usr/share/icons/Paper/48x48/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/48x48/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/48x48/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/48x48/apps/org.gnome.Usage.png
@@ -19928,6 +20034,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/apps/xpdf.png
 /usr/share/icons/Paper/48x48/apps/xplayer.png
 /usr/share/icons/Paper/48x48/apps/xreader.png
+/usr/share/icons/Paper/48x48/apps/xsane.png
 /usr/share/icons/Paper/48x48/apps/xscreensaver.png
 /usr/share/icons/Paper/48x48/apps/xterm-color.png
 /usr/share/icons/Paper/48x48/apps/xterm-color_32x32.png
@@ -20194,6 +20301,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/48x48/mimetypes/application-archive.png
 /usr/share/icons/Paper/48x48/mimetypes/application-gzip.png
+/usr/share/icons/Paper/48x48/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/48x48/mimetypes/application-msword.png
 /usr/share/icons/Paper/48x48/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/48x48/mimetypes/application-ogg.png
@@ -20201,6 +20309,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/48x48/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/48x48/mimetypes/application-vnd.ms-powerpoint.png
@@ -20363,6 +20472,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/mimetypes/gnome-package.png
 /usr/share/icons/Paper/48x48/mimetypes/gtk-file.png
 /usr/share/icons/Paper/48x48/mimetypes/html.png
+/usr/share/icons/Paper/48x48/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/48x48/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/48x48/mimetypes/image.png
 /usr/share/icons/Paper/48x48/mimetypes/inode-directory.png
@@ -20652,7 +20762,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/places/xubuntu.png
 /usr/share/icons/Paper/48x48/status/appointment-missed.png
 /usr/share/icons/Paper/48x48/status/appointment-soon.png
+/usr/share/icons/Paper/48x48/status/aptdaemon-add.png
 /usr/share/icons/Paper/48x48/status/aptdaemon-delete.png
+/usr/share/icons/Paper/48x48/status/aptdaemon-download.png
 /usr/share/icons/Paper/48x48/status/aptdaemon-error.png
 /usr/share/icons/Paper/48x48/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/48x48/status/aptdaemon-upgrade.png
@@ -20704,6 +20816,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/status/edittrash.png
 /usr/share/icons/Paper/48x48/status/error.png
 /usr/share/icons/Paper/48x48/status/extended-away.png
+/usr/share/icons/Paper/48x48/status/feed-non-starred.png
 /usr/share/icons/Paper/48x48/status/feed-starred.png
 /usr/share/icons/Paper/48x48/status/folder-drag-accept.png
 /usr/share/icons/Paper/48x48/status/folder-open.png
@@ -20763,13 +20876,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48/status/nm-device-wired.png
 /usr/share/icons/Paper/48x48/status/nm-device-wireless.png
 /usr/share/icons/Paper/48x48/status/nm-no-connection.png
+/usr/share/icons/Paper/48x48/status/non-starred-grey.png
 /usr/share/icons/Paper/48x48/status/object-locked.png
 /usr/share/icons/Paper/48x48/status/object-unlocked.png
 /usr/share/icons/Paper/48x48/status/person.png
 /usr/share/icons/Paper/48x48/status/pin-down.png
+/usr/share/icons/Paper/48x48/status/pin-up.png
 /usr/share/icons/Paper/48x48/status/printer-error.png
 /usr/share/icons/Paper/48x48/status/printer-info.png
 /usr/share/icons/Paper/48x48/status/printer-printing.png
+/usr/share/icons/Paper/48x48/status/rating-unrated.png
 /usr/share/icons/Paper/48x48/status/security-high.png
 /usr/share/icons/Paper/48x48/status/security-low.png
 /usr/share/icons/Paper/48x48/status/security-medium.png
@@ -21010,6 +21126,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/actions/mail-mark-important.png
 /usr/share/icons/Paper/48x48@2x/actions/mail-mark-junk.png
 /usr/share/icons/Paper/48x48@2x/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/48x48@2x/actions/mail-reply.png
 /usr/share/icons/Paper/48x48@2x/actions/mail-send-receive.png
 /usr/share/icons/Paper/48x48@2x/actions/mail_spam.png
 /usr/share/icons/Paper/48x48@2x/actions/next.png
@@ -21077,6 +21194,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/apps/QtIcon.png
 /usr/share/icons/Paper/48x48@2x/apps/QtProject-assistant.png
 /usr/share/icons/Paper/48x48@2x/apps/QtProject-designer.png
+/usr/share/icons/Paper/48x48@2x/apps/QtProject-linguist.png
 /usr/share/icons/Paper/48x48@2x/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/48x48@2x/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/48x48@2x/apps/Sci48M.png
@@ -21681,6 +21799,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/apps/libreoffice5.3.png
 /usr/share/icons/Paper/48x48@2x/apps/liferea.png
 /usr/share/icons/Paper/48x48@2x/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/48x48@2x/apps/linguist-qt4.png
+/usr/share/icons/Paper/48x48@2x/apps/linguist.png
+/usr/share/icons/Paper/48x48@2x/apps/linphone.png
 /usr/share/icons/Paper/48x48@2x/apps/linssid.png
 /usr/share/icons/Paper/48x48@2x/apps/linssid32.png
 /usr/share/icons/Paper/48x48@2x/apps/linssid48.png
@@ -21823,6 +21944,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.Software.png
+/usr/share/icons/Paper/48x48@2x/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/48x48@2x/apps/org.gnome.Usage.png
@@ -22179,6 +22301,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/apps/xpdf.png
 /usr/share/icons/Paper/48x48@2x/apps/xplayer.png
 /usr/share/icons/Paper/48x48@2x/apps/xreader.png
+/usr/share/icons/Paper/48x48@2x/apps/xsane.png
 /usr/share/icons/Paper/48x48@2x/apps/xscreensaver.png
 /usr/share/icons/Paper/48x48@2x/apps/xterm-color.png
 /usr/share/icons/Paper/48x48@2x/apps/xterm-color_32x32.png
@@ -22445,6 +22568,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-archive.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-gzip.png
+/usr/share/icons/Paper/48x48@2x/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-msword.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-ogg.png
@@ -22452,6 +22576,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/application-vnd.ms-powerpoint.png
@@ -22614,6 +22739,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/mimetypes/gnome-package.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/gtk-file.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/html.png
+/usr/share/icons/Paper/48x48@2x/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/image.png
 /usr/share/icons/Paper/48x48@2x/mimetypes/inode-directory.png
@@ -22863,7 +22989,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/places/xubuntu.png
 /usr/share/icons/Paper/48x48@2x/status/appointment-missed.png
 /usr/share/icons/Paper/48x48@2x/status/appointment-soon.png
+/usr/share/icons/Paper/48x48@2x/status/aptdaemon-add.png
 /usr/share/icons/Paper/48x48@2x/status/aptdaemon-delete.png
+/usr/share/icons/Paper/48x48@2x/status/aptdaemon-download.png
 /usr/share/icons/Paper/48x48@2x/status/aptdaemon-error.png
 /usr/share/icons/Paper/48x48@2x/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/48x48@2x/status/aptdaemon-upgrade.png
@@ -22915,6 +23043,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/status/edittrash.png
 /usr/share/icons/Paper/48x48@2x/status/error.png
 /usr/share/icons/Paper/48x48@2x/status/extended-away.png
+/usr/share/icons/Paper/48x48@2x/status/feed-non-starred.png
 /usr/share/icons/Paper/48x48@2x/status/feed-starred.png
 /usr/share/icons/Paper/48x48@2x/status/folder-drag-accept.png
 /usr/share/icons/Paper/48x48@2x/status/folder-open.png
@@ -22974,13 +23103,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/48x48@2x/status/nm-device-wired.png
 /usr/share/icons/Paper/48x48@2x/status/nm-device-wireless.png
 /usr/share/icons/Paper/48x48@2x/status/nm-no-connection.png
+/usr/share/icons/Paper/48x48@2x/status/non-starred-grey.png
 /usr/share/icons/Paper/48x48@2x/status/object-locked.png
 /usr/share/icons/Paper/48x48@2x/status/object-unlocked.png
 /usr/share/icons/Paper/48x48@2x/status/person.png
 /usr/share/icons/Paper/48x48@2x/status/pin-down.png
+/usr/share/icons/Paper/48x48@2x/status/pin-up.png
 /usr/share/icons/Paper/48x48@2x/status/printer-error.png
 /usr/share/icons/Paper/48x48@2x/status/printer-info.png
 /usr/share/icons/Paper/48x48@2x/status/printer-printing.png
+/usr/share/icons/Paper/48x48@2x/status/rating-unrated.png
 /usr/share/icons/Paper/48x48@2x/status/security-high.png
 /usr/share/icons/Paper/48x48@2x/status/security-low.png
 /usr/share/icons/Paper/48x48@2x/status/security-medium.png
@@ -23221,6 +23353,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/actions/mail-mark-important.png
 /usr/share/icons/Paper/512x512/actions/mail-mark-junk.png
 /usr/share/icons/Paper/512x512/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/512x512/actions/mail-reply.png
 /usr/share/icons/Paper/512x512/actions/mail-send-receive.png
 /usr/share/icons/Paper/512x512/actions/mail_spam.png
 /usr/share/icons/Paper/512x512/actions/next.png
@@ -23288,6 +23421,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/apps/QtIcon.png
 /usr/share/icons/Paper/512x512/apps/QtProject-assistant.png
 /usr/share/icons/Paper/512x512/apps/QtProject-designer.png
+/usr/share/icons/Paper/512x512/apps/QtProject-linguist.png
 /usr/share/icons/Paper/512x512/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/512x512/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/512x512/apps/Sci48M.png
@@ -23892,6 +24026,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/apps/libreoffice5.3.png
 /usr/share/icons/Paper/512x512/apps/liferea.png
 /usr/share/icons/Paper/512x512/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/512x512/apps/linguist-qt4.png
+/usr/share/icons/Paper/512x512/apps/linguist.png
+/usr/share/icons/Paper/512x512/apps/linphone.png
 /usr/share/icons/Paper/512x512/apps/linssid.png
 /usr/share/icons/Paper/512x512/apps/linssid32.png
 /usr/share/icons/Paper/512x512/apps/linssid48.png
@@ -24034,6 +24171,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/512x512/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/512x512/apps/org.gnome.Software.png
+/usr/share/icons/Paper/512x512/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/512x512/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/512x512/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/512x512/apps/org.gnome.Usage.png
@@ -24390,6 +24528,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/apps/xpdf.png
 /usr/share/icons/Paper/512x512/apps/xplayer.png
 /usr/share/icons/Paper/512x512/apps/xreader.png
+/usr/share/icons/Paper/512x512/apps/xsane.png
 /usr/share/icons/Paper/512x512/apps/xscreensaver.png
 /usr/share/icons/Paper/512x512/apps/xterm-color.png
 /usr/share/icons/Paper/512x512/apps/xterm-color_32x32.png
@@ -24656,6 +24795,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/512x512/mimetypes/application-archive.png
 /usr/share/icons/Paper/512x512/mimetypes/application-gzip.png
+/usr/share/icons/Paper/512x512/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/512x512/mimetypes/application-msword.png
 /usr/share/icons/Paper/512x512/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/512x512/mimetypes/application-ogg.png
@@ -24663,6 +24803,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/512x512/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/512x512/mimetypes/application-vnd.ms-powerpoint.png
@@ -24825,6 +24966,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/mimetypes/gnome-package.png
 /usr/share/icons/Paper/512x512/mimetypes/gtk-file.png
 /usr/share/icons/Paper/512x512/mimetypes/html.png
+/usr/share/icons/Paper/512x512/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/512x512/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/512x512/mimetypes/image.png
 /usr/share/icons/Paper/512x512/mimetypes/inode-directory.png
@@ -25074,7 +25216,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/places/xubuntu.png
 /usr/share/icons/Paper/512x512/status/appointment-missed.png
 /usr/share/icons/Paper/512x512/status/appointment-soon.png
+/usr/share/icons/Paper/512x512/status/aptdaemon-add.png
 /usr/share/icons/Paper/512x512/status/aptdaemon-delete.png
+/usr/share/icons/Paper/512x512/status/aptdaemon-download.png
 /usr/share/icons/Paper/512x512/status/aptdaemon-error.png
 /usr/share/icons/Paper/512x512/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/512x512/status/aptdaemon-upgrade.png
@@ -25126,6 +25270,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/status/edittrash.png
 /usr/share/icons/Paper/512x512/status/error.png
 /usr/share/icons/Paper/512x512/status/extended-away.png
+/usr/share/icons/Paper/512x512/status/feed-non-starred.png
 /usr/share/icons/Paper/512x512/status/feed-starred.png
 /usr/share/icons/Paper/512x512/status/folder-drag-accept.png
 /usr/share/icons/Paper/512x512/status/folder-open.png
@@ -25185,13 +25330,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512/status/nm-device-wired.png
 /usr/share/icons/Paper/512x512/status/nm-device-wireless.png
 /usr/share/icons/Paper/512x512/status/nm-no-connection.png
+/usr/share/icons/Paper/512x512/status/non-starred-grey.png
 /usr/share/icons/Paper/512x512/status/object-locked.png
 /usr/share/icons/Paper/512x512/status/object-unlocked.png
 /usr/share/icons/Paper/512x512/status/person.png
 /usr/share/icons/Paper/512x512/status/pin-down.png
+/usr/share/icons/Paper/512x512/status/pin-up.png
 /usr/share/icons/Paper/512x512/status/printer-error.png
 /usr/share/icons/Paper/512x512/status/printer-info.png
 /usr/share/icons/Paper/512x512/status/printer-printing.png
+/usr/share/icons/Paper/512x512/status/rating-unrated.png
 /usr/share/icons/Paper/512x512/status/security-high.png
 /usr/share/icons/Paper/512x512/status/security-low.png
 /usr/share/icons/Paper/512x512/status/security-medium.png
@@ -25432,6 +25580,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/actions/mail-mark-important.png
 /usr/share/icons/Paper/512x512@2x/actions/mail-mark-junk.png
 /usr/share/icons/Paper/512x512@2x/actions/mail-mark-notjunk.png
+/usr/share/icons/Paper/512x512@2x/actions/mail-reply.png
 /usr/share/icons/Paper/512x512@2x/actions/mail-send-receive.png
 /usr/share/icons/Paper/512x512@2x/actions/mail_spam.png
 /usr/share/icons/Paper/512x512@2x/actions/next.png
@@ -25499,6 +25648,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/apps/QtIcon.png
 /usr/share/icons/Paper/512x512@2x/apps/QtProject-assistant.png
 /usr/share/icons/Paper/512x512@2x/apps/QtProject-designer.png
+/usr/share/icons/Paper/512x512@2x/apps/QtProject-linguist.png
 /usr/share/icons/Paper/512x512@2x/apps/QtProject-qtcreator-qt5.png
 /usr/share/icons/Paper/512x512@2x/apps/QtProject-qtcreator.png
 /usr/share/icons/Paper/512x512@2x/apps/Sci48M.png
@@ -26103,6 +26253,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/apps/libreoffice5.3.png
 /usr/share/icons/Paper/512x512@2x/apps/liferea.png
 /usr/share/icons/Paper/512x512@2x/apps/lightdm-gtk-greeter-settings.png
+/usr/share/icons/Paper/512x512@2x/apps/linguist-qt4.png
+/usr/share/icons/Paper/512x512@2x/apps/linguist.png
+/usr/share/icons/Paper/512x512@2x/apps/linphone.png
 /usr/share/icons/Paper/512x512@2x/apps/linssid.png
 /usr/share/icons/Paper/512x512@2x/apps/linssid32.png
 /usr/share/icons/Paper/512x512@2x/apps/linssid48.png
@@ -26245,6 +26398,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.Polari.png
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.PowerStats.png
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.Software.png
+/usr/share/icons/Paper/512x512@2x/apps/org.gnome.Terminal.png
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.Todo.png
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.Totem.png
 /usr/share/icons/Paper/512x512@2x/apps/org.gnome.Usage.png
@@ -26601,6 +26755,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/apps/xpdf.png
 /usr/share/icons/Paper/512x512@2x/apps/xplayer.png
 /usr/share/icons/Paper/512x512@2x/apps/xreader.png
+/usr/share/icons/Paper/512x512@2x/apps/xsane.png
 /usr/share/icons/Paper/512x512@2x/apps/xscreensaver.png
 /usr/share/icons/Paper/512x512@2x/apps/xterm-color.png
 /usr/share/icons/Paper/512x512@2x/apps/xterm-color_32x32.png
@@ -26867,6 +27022,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-archive-zip.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-archive.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-gzip.png
+/usr/share/icons/Paper/512x512@2x/mimetypes/application-illustrator.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-msword.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-octet-stream.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-ogg.png
@@ -26874,6 +27030,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.android.package-archive.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.debian.binary-package.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.iccprofile.png
+/usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.ms-access.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.ms-excel.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.ms-excel.sheet.macroEnabled.12.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/application-vnd.ms-powerpoint.png
@@ -27036,6 +27193,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/mimetypes/gnome-package.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/gtk-file.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/html.png
+/usr/share/icons/Paper/512x512@2x/mimetypes/image-vnd.adobe.photoshop.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/image-x-generic.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/image.png
 /usr/share/icons/Paper/512x512@2x/mimetypes/inode-directory.png
@@ -27285,7 +27443,9 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/places/xubuntu.png
 /usr/share/icons/Paper/512x512@2x/status/appointment-missed.png
 /usr/share/icons/Paper/512x512@2x/status/appointment-soon.png
+/usr/share/icons/Paper/512x512@2x/status/aptdaemon-add.png
 /usr/share/icons/Paper/512x512@2x/status/aptdaemon-delete.png
+/usr/share/icons/Paper/512x512@2x/status/aptdaemon-download.png
 /usr/share/icons/Paper/512x512@2x/status/aptdaemon-error.png
 /usr/share/icons/Paper/512x512@2x/status/aptdaemon-update-cache.png
 /usr/share/icons/Paper/512x512@2x/status/aptdaemon-upgrade.png
@@ -27337,6 +27497,7 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/status/edittrash.png
 /usr/share/icons/Paper/512x512@2x/status/error.png
 /usr/share/icons/Paper/512x512@2x/status/extended-away.png
+/usr/share/icons/Paper/512x512@2x/status/feed-non-starred.png
 /usr/share/icons/Paper/512x512@2x/status/feed-starred.png
 /usr/share/icons/Paper/512x512@2x/status/folder-drag-accept.png
 /usr/share/icons/Paper/512x512@2x/status/folder-open.png
@@ -27396,13 +27557,16 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 /usr/share/icons/Paper/512x512@2x/status/nm-device-wired.png
 /usr/share/icons/Paper/512x512@2x/status/nm-device-wireless.png
 /usr/share/icons/Paper/512x512@2x/status/nm-no-connection.png
+/usr/share/icons/Paper/512x512@2x/status/non-starred-grey.png
 /usr/share/icons/Paper/512x512@2x/status/object-locked.png
 /usr/share/icons/Paper/512x512@2x/status/object-unlocked.png
 /usr/share/icons/Paper/512x512@2x/status/person.png
 /usr/share/icons/Paper/512x512@2x/status/pin-down.png
+/usr/share/icons/Paper/512x512@2x/status/pin-up.png
 /usr/share/icons/Paper/512x512@2x/status/printer-error.png
 /usr/share/icons/Paper/512x512@2x/status/printer-info.png
 /usr/share/icons/Paper/512x512@2x/status/printer-printing.png
+/usr/share/icons/Paper/512x512@2x/status/rating-unrated.png
 /usr/share/icons/Paper/512x512@2x/status/security-high.png
 /usr/share/icons/Paper/512x512@2x/status/security-low.png
 /usr/share/icons/Paper/512x512@2x/status/security-medium.png
