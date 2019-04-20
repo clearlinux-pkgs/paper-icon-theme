@@ -4,7 +4,7 @@
 #
 Name     : paper-icon-theme
 Version  : 1.5.0
-Release  : 4
+Release  : 5
 URL      : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Source0  : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Summary  : Paper Icon theme
