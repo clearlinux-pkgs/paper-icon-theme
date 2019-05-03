@@ -1,0 +1,115 @@
+From 95ba54ebbf0163a07bd859041014e325a676634e Mon Sep 17 00:00:00 2001
+From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
+Date: Fri, 3 May 2019 15:15:00 -0500
+Subject: [PATCH] don't use org.gnome.Software icon
+
+So we make sure paper-icon-theme uses our default software
+icon (installed in hicolor by gnome-software)
+
+Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
+---
+ Paper/16x16/apps/org.gnome.Software.png      | 1 -
+ Paper/16x16@2x/apps/org.gnome.Software.png   | 1 -
+ Paper/24x24/apps/org.gnome.Software.png      | 1 -
+ Paper/24x24@2x/apps/org.gnome.Software.png   | 1 -
+ Paper/32x32/apps/org.gnome.Software.png      | 1 -
+ Paper/32x32@2x/apps/org.gnome.Software.png   | 1 -
+ Paper/48x48/apps/org.gnome.Software.png      | 1 -
+ Paper/48x48@2x/apps/org.gnome.Software.png   | 1 -
+ Paper/512x512/apps/org.gnome.Software.png    | 1 -
+ Paper/512x512@2x/apps/org.gnome.Software.png | 1 -
+ 10 files changed, 10 deletions(-)
+ delete mode 120000 Paper/16x16/apps/org.gnome.Software.png
+ delete mode 120000 Paper/16x16@2x/apps/org.gnome.Software.png
+ delete mode 120000 Paper/24x24/apps/org.gnome.Software.png
+ delete mode 120000 Paper/24x24@2x/apps/org.gnome.Software.png
+ delete mode 120000 Paper/32x32/apps/org.gnome.Software.png
+ delete mode 120000 Paper/32x32@2x/apps/org.gnome.Software.png
+ delete mode 120000 Paper/48x48/apps/org.gnome.Software.png
+ delete mode 120000 Paper/48x48@2x/apps/org.gnome.Software.png
+ delete mode 120000 Paper/512x512/apps/org.gnome.Software.png
+ delete mode 120000 Paper/512x512@2x/apps/org.gnome.Software.png
+
+diff --git a/Paper/16x16/apps/org.gnome.Software.png b/Paper/16x16/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/16x16/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/16x16@2x/apps/org.gnome.Software.png b/Paper/16x16@2x/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/16x16@2x/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/24x24/apps/org.gnome.Software.png b/Paper/24x24/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/24x24/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/24x24@2x/apps/org.gnome.Software.png b/Paper/24x24@2x/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/24x24@2x/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/32x32/apps/org.gnome.Software.png b/Paper/32x32/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/32x32/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/32x32@2x/apps/org.gnome.Software.png b/Paper/32x32@2x/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/32x32@2x/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/48x48/apps/org.gnome.Software.png b/Paper/48x48/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/48x48/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/48x48@2x/apps/org.gnome.Software.png b/Paper/48x48@2x/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/48x48@2x/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/512x512/apps/org.gnome.Software.png b/Paper/512x512/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/512x512/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+diff --git a/Paper/512x512@2x/apps/org.gnome.Software.png b/Paper/512x512@2x/apps/org.gnome.Software.png
+deleted file mode 120000
+index b06ddd2..0000000
+--- a/Paper/512x512@2x/apps/org.gnome.Software.png
++++ /dev/null
+@@ -1 +0,0 @@
+-software-store.png
+\ No newline at end of file
+-- 
+2.21.0
+
