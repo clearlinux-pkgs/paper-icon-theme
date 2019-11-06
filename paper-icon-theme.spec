@@ -4,7 +4,7 @@
 #
 Name     : paper-icon-theme
 Version  : 1.5.0
-Release  : 6
+Release  : 7
 URL      : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Source0  : https://github.com/snwh/paper-icon-theme/archive/v.1.5.0.tar.gz
 Summary  : Paper Icon theme
@@ -17,6 +17,7 @@ BuildRequires : pkgconfig(gtk+-3.0)
 Patch1: 0001-Added-symlinks-for-Gnome-Terminal-3.31.90.patch
 Patch2: 0002-Rebuild-symlinks.patch
 Patch3: 0003-don-t-use-org.gnome.Software-icon.patch
+Patch4: 0004-Paper-scalable-fix-svg-namespace-definitions.patch
 
 %description
 Paper is simple and modern icon theme with material design influences.
@@ -39,36 +40,39 @@ license components for the paper-icon-theme package.
 
 %prep
 %setup -q -n paper-icon-theme-v.1.5.0
+cd %{_builddir}/paper-icon-theme-v.1.5.0
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1556919299
-export LDFLAGS="${LDFLAGS} -fno-lto"
-CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --prefix /usr --buildtype=plain   builddir
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1573057710
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+CFLAGS="$CFLAGS" CXXFLAGS="$CXXFLAGS" LDFLAGS="$LDFLAGS" meson --libdir=lib64 --prefix=/usr --buildtype=plain   builddir
 ninja -v -C builddir
 
 %install
 mkdir -p %{buildroot}/usr/share/package-licenses/paper-icon-theme
-cp LICENSE %{buildroot}/usr/share/package-licenses/paper-icon-theme/LICENSE
+cp %{_builddir}/paper-icon-theme-v.1.5.0/LICENSE %{buildroot}/usr/share/package-licenses/paper-icon-theme/7fed3068848e01f7365be21a24d5db7af411a5c7
 DESTDIR=%{buildroot} ninja -C builddir install
-## install_append content
-gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper -f &&
-gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
-## install_append end
+## Remove excluded files
+rm -f %{buildroot}/usr/share/icons/Paper-Mono-Dark/icon-theme.cache
+rm -f %{buildroot}/usr/share/icons/Paper/icon-theme.cache
 
 %files
 %defattr(-,root,root,-)
 
 %files data
 %defattr(-,root,root,-)
-%exclude /usr/share/icons/Paper-Mono-Dark/icon-theme.cache
-%exclude /usr/share/icons/Paper/icon-theme.cache
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting01.svg
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting02.svg
 /usr/share/icons/Paper-Mono-Dark/22x22/animations/nm-stage01-connecting03.svg
@@ -28508,4 +28512,4 @@ gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/paper-icon-theme/LICENSE
+/usr/share/package-licenses/paper-icon-theme/7fed3068848e01f7365be21a24d5db7af411a5c7

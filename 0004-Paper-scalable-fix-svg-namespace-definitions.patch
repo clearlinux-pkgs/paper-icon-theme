@@ -1,0 +1,890 @@
+From 513ce21f8131d3073d527eee13ff07e1a544aa67 Mon Sep 17 00:00:00 2001
+From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
+Date: Wed, 6 Nov 2019 09:34:24 -0600
+Subject: [PATCH 4/4] Paper/scalable: fix svg namespace definitions
+
+With new librsvg (2.47.0), malformed namespace definitions in
+XML will result in a failure as the following:
+
+`
+ Error reading SVG:XML parse error: error code=201 (3) in (null):5:60: Namespace prefix osb for paint on linearGradient is not defined
+`
+
+This is because librsvg is now stricter on parsing elements or
+attributes with namespace prefixes[1]
+
+[1]-https://gitlab.gnome.org/GNOME/librsvg/blob/2.47.0/NEWS#L3
+
+Fixes https://github.com/snwh/paper-icon-theme/issues/730
+
+Signed-off-by: Simental Magana, Marcos <marcos.simental.magana@intel.com>
+---
+ Paper/scalable/actions/document-open-symbolic.svg               | 2 +-
+ Paper/scalable/actions/edit-redo-symbolic.svg                   | 2 +-
+ Paper/scalable/actions/edit-undo-symbolic.svg                   | 2 +-
+ Paper/scalable/actions/format-text-bold-symbolic.svg            | 2 +-
+ Paper/scalable/actions/format-text-direction-ltr-symbolic.svg   | 2 +-
+ Paper/scalable/actions/format-text-direction-rtl-symbolic.svg   | 2 +-
+ Paper/scalable/actions/format-text-italic-symbolic.svg          | 2 +-
+ Paper/scalable/actions/format-text-strikethrough-symbolic.svg   | 2 +-
+ Paper/scalable/actions/format-text-underline-symbolic.svg       | 2 +-
+ Paper/scalable/actions/go-bottom-symbolic.svg                   | 2 +-
+ Paper/scalable/actions/go-down-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/go-first-symbolic.svg                    | 2 +-
+ Paper/scalable/actions/go-jump-rtl-symbolic.svg                 | 2 +-
+ Paper/scalable/actions/go-jump-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/go-last-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/go-next-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/go-previous-symbolic.svg                 | 2 +-
+ Paper/scalable/actions/go-top-symbolic.svg                      | 2 +-
+ Paper/scalable/actions/go-up-symbolic.svg                       | 2 +-
+ Paper/scalable/actions/image-crop-symbolic.svg                  | 2 +-
+ Paper/scalable/actions/list-add-symbolic.svg                    | 2 +-
+ Paper/scalable/actions/list-remove-symbolic.svg                 | 2 +-
+ Paper/scalable/actions/location-symbolic.svg                    | 2 +-
+ Paper/scalable/actions/mail-send-receive-symbolic.svg           | 2 +-
+ Paper/scalable/actions/media-eject-symbolic.svg                 | 2 +-
+ Paper/scalable/actions/media-playback-pause-symbolic.svg        | 2 +-
+ Paper/scalable/actions/media-playback-start-rtl-symbolic.svg    | 2 +-
+ Paper/scalable/actions/media-playback-start-symbolic.svg        | 2 +-
+ Paper/scalable/actions/media-playback-stop-symbolic.svg         | 2 +-
+ Paper/scalable/actions/media-record-symbolic.svg                | 2 +-
+ Paper/scalable/actions/media-seek-backward-symbolic.svg         | 2 +-
+ Paper/scalable/actions/media-seek-forward-symbolic.svg          | 2 +-
+ Paper/scalable/actions/media-skip-backward-symbolic.svg         | 2 +-
+ Paper/scalable/actions/media-skip-forward-symbolic.svg          | 2 +-
+ Paper/scalable/actions/pan-down-symbolic.svg                    | 2 +-
+ Paper/scalable/actions/pan-end-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/pan-start-symbolic.svg                   | 2 +-
+ Paper/scalable/actions/pan-up-symbolic.svg                      | 2 +-
+ Paper/scalable/actions/selection-end-symbolic.svg               | 2 +-
+ Paper/scalable/actions/selection-start-symbolic.svg             | 2 +-
+ Paper/scalable/actions/view-coverflow-symbolic.svg              | 2 +-
+ Paper/scalable/actions/view-filter-symbolic.svg                 | 2 +-
+ Paper/scalable/actions/zoom-in-symbolic.svg                     | 2 +-
+ Paper/scalable/actions/zoom-original-symbolic.svg               | 2 +-
+ Paper/scalable/actions/zoom-out-symbolic.svg                    | 2 +-
+ Paper/scalable/devices/drive-harddisk-ieee1394-symbolic.svg     | 2 +-
+ Paper/scalable/status/appointment-missed-symbolic.svg           | 2 +-
+ Paper/scalable/status/keyboard-brightness-symbolic.svg          | 2 +-
+ Paper/scalable/status/mail-replied-symbolic.svg                 | 2 +-
+ .../scalable/status/media-playlist-consecutive-rtl-symbolic.svg | 2 +-
+ Paper/scalable/status/media-playlist-consecutive-symbolic.svg   | 2 +-
+ Paper/scalable/status/media-playlist-no-repeat-symbolic.svg     | 2 +-
+ Paper/scalable/status/media-playlist-repeat-rtl-symbolic.svg    | 2 +-
+ .../scalable/status/media-playlist-repeat-song-rtl-symbolic.svg | 2 +-
+ Paper/scalable/status/media-playlist-repeat-song-symbolic.svg   | 2 +-
+ Paper/scalable/status/media-playlist-repeat-symbolic.svg        | 2 +-
+ Paper/scalable/status/media-playlist-shuffle-rtl-symbolic.svg   | 2 +-
+ Paper/scalable/status/media-playlist-shuffle-symbolic.svg       | 2 +-
+ Paper/scalable/status/network-cellular-3g-symbolic.svg          | 2 +-
+ Paper/scalable/status/network-cellular-4g-symbolic.svg          | 2 +-
+ Paper/scalable/status/network-cellular-cdma-1x-symbolic.svg     | 2 +-
+ Paper/scalable/status/network-cellular-edge-symbolic.svg        | 2 +-
+ Paper/scalable/status/network-cellular-gprs-symbolic.svg        | 2 +-
+ Paper/scalable/status/network-cellular-hspa-symbolic.svg        | 2 +-
+ Paper/scalable/status/network-cellular-umts-symbolic.svg        | 2 +-
+ Paper/scalable/status/radio-checked-symbolic.svg                | 2 +-
+ Paper/scalable/status/radio-mixed-symbolic.svg                  | 2 +-
+ Paper/scalable/status/radio-symbolic.svg                        | 2 +-
+ Paper/scalable/status/view-wrapped-rtl-symbolic.svg             | 2 +-
+ Paper/scalable/status/view-wrapped-symbolic.svg                 | 2 +-
+ Paper/scalable/status/weather-clear-night-symbolic.svg          | 2 +-
+ Paper/scalable/status/weather-fog-symbolic.svg                  | 2 +-
+ 72 files changed, 72 insertions(+), 72 deletions(-)
+
+diff --git a/Paper/scalable/actions/document-open-symbolic.svg b/Paper/scalable/actions/document-open-symbolic.svg
+index 120b786..3c19323 100755
+--- a/Paper/scalable/actions/document-open-symbolic.svg
++++ b/Paper/scalable/actions/document-open-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/edit-redo-symbolic.svg b/Paper/scalable/actions/edit-redo-symbolic.svg
+index 6088213..a13090e 100755
+--- a/Paper/scalable/actions/edit-redo-symbolic.svg
++++ b/Paper/scalable/actions/edit-redo-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/edit-undo-symbolic.svg b/Paper/scalable/actions/edit-undo-symbolic.svg
+index 6ac2173..05407f4 100755
+--- a/Paper/scalable/actions/edit-undo-symbolic.svg
++++ b/Paper/scalable/actions/edit-undo-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-bold-symbolic.svg b/Paper/scalable/actions/format-text-bold-symbolic.svg
+index 613fbdc..21ab51e 100755
+--- a/Paper/scalable/actions/format-text-bold-symbolic.svg
++++ b/Paper/scalable/actions/format-text-bold-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-direction-ltr-symbolic.svg b/Paper/scalable/actions/format-text-direction-ltr-symbolic.svg
+index 54c210c..7ba03e2 100755
+--- a/Paper/scalable/actions/format-text-direction-ltr-symbolic.svg
++++ b/Paper/scalable/actions/format-text-direction-ltr-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-direction-rtl-symbolic.svg b/Paper/scalable/actions/format-text-direction-rtl-symbolic.svg
+index f808f3c..fcc0547 100755
+--- a/Paper/scalable/actions/format-text-direction-rtl-symbolic.svg
++++ b/Paper/scalable/actions/format-text-direction-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-italic-symbolic.svg b/Paper/scalable/actions/format-text-italic-symbolic.svg
+index f8d5bc8..2fc4528 100755
+--- a/Paper/scalable/actions/format-text-italic-symbolic.svg
++++ b/Paper/scalable/actions/format-text-italic-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-strikethrough-symbolic.svg b/Paper/scalable/actions/format-text-strikethrough-symbolic.svg
+index 4576e19..e5b7aa5 100755
+--- a/Paper/scalable/actions/format-text-strikethrough-symbolic.svg
++++ b/Paper/scalable/actions/format-text-strikethrough-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/format-text-underline-symbolic.svg b/Paper/scalable/actions/format-text-underline-symbolic.svg
+index 1c036a4..b0d5682 100755
+--- a/Paper/scalable/actions/format-text-underline-symbolic.svg
++++ b/Paper/scalable/actions/format-text-underline-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-bottom-symbolic.svg b/Paper/scalable/actions/go-bottom-symbolic.svg
+index 66959ac..17cb95f 100755
+--- a/Paper/scalable/actions/go-bottom-symbolic.svg
++++ b/Paper/scalable/actions/go-bottom-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-down-symbolic.svg b/Paper/scalable/actions/go-down-symbolic.svg
+index 0bc1307..7000efe 100755
+--- a/Paper/scalable/actions/go-down-symbolic.svg
++++ b/Paper/scalable/actions/go-down-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-first-symbolic.svg b/Paper/scalable/actions/go-first-symbolic.svg
+index d8c1579..b1304c5 100755
+--- a/Paper/scalable/actions/go-first-symbolic.svg
++++ b/Paper/scalable/actions/go-first-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-jump-rtl-symbolic.svg b/Paper/scalable/actions/go-jump-rtl-symbolic.svg
+index 2fe0c9c..ef6a536 100755
+--- a/Paper/scalable/actions/go-jump-rtl-symbolic.svg
++++ b/Paper/scalable/actions/go-jump-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-jump-symbolic.svg b/Paper/scalable/actions/go-jump-symbolic.svg
+index b0d2b42..e0ca403 100755
+--- a/Paper/scalable/actions/go-jump-symbolic.svg
++++ b/Paper/scalable/actions/go-jump-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-last-symbolic.svg b/Paper/scalable/actions/go-last-symbolic.svg
+index 2e34b35..08a5493 100755
+--- a/Paper/scalable/actions/go-last-symbolic.svg
++++ b/Paper/scalable/actions/go-last-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-next-symbolic.svg b/Paper/scalable/actions/go-next-symbolic.svg
+index 9575b93..3f5e8bf 100755
+--- a/Paper/scalable/actions/go-next-symbolic.svg
++++ b/Paper/scalable/actions/go-next-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-previous-symbolic.svg b/Paper/scalable/actions/go-previous-symbolic.svg
+index a6eea13..b7c5364 100755
+--- a/Paper/scalable/actions/go-previous-symbolic.svg
++++ b/Paper/scalable/actions/go-previous-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-top-symbolic.svg b/Paper/scalable/actions/go-top-symbolic.svg
+index 7354120..6d0eb03 100755
+--- a/Paper/scalable/actions/go-top-symbolic.svg
++++ b/Paper/scalable/actions/go-top-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/go-up-symbolic.svg b/Paper/scalable/actions/go-up-symbolic.svg
+index 0967a11..5614975 100755
+--- a/Paper/scalable/actions/go-up-symbolic.svg
++++ b/Paper/scalable/actions/go-up-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/image-crop-symbolic.svg b/Paper/scalable/actions/image-crop-symbolic.svg
+index 8168755..64f8579 100755
+--- a/Paper/scalable/actions/image-crop-symbolic.svg
++++ b/Paper/scalable/actions/image-crop-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/list-add-symbolic.svg b/Paper/scalable/actions/list-add-symbolic.svg
+index 01e1952..ba9a965 100755
+--- a/Paper/scalable/actions/list-add-symbolic.svg
++++ b/Paper/scalable/actions/list-add-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/list-remove-symbolic.svg b/Paper/scalable/actions/list-remove-symbolic.svg
+index 5d3ba00..d3c0dee 100755
+--- a/Paper/scalable/actions/list-remove-symbolic.svg
++++ b/Paper/scalable/actions/list-remove-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/location-symbolic.svg b/Paper/scalable/actions/location-symbolic.svg
+index 08a0ce4..7b9f084 100755
+--- a/Paper/scalable/actions/location-symbolic.svg
++++ b/Paper/scalable/actions/location-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/mail-send-receive-symbolic.svg b/Paper/scalable/actions/mail-send-receive-symbolic.svg
+index aed096e..3555e2d 100755
+--- a/Paper/scalable/actions/mail-send-receive-symbolic.svg
++++ b/Paper/scalable/actions/mail-send-receive-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-eject-symbolic.svg b/Paper/scalable/actions/media-eject-symbolic.svg
+index d832a49..0d27274 100755
+--- a/Paper/scalable/actions/media-eject-symbolic.svg
++++ b/Paper/scalable/actions/media-eject-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-playback-pause-symbolic.svg b/Paper/scalable/actions/media-playback-pause-symbolic.svg
+index 5b1a806..0a824f4 100755
+--- a/Paper/scalable/actions/media-playback-pause-symbolic.svg
++++ b/Paper/scalable/actions/media-playback-pause-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-playback-start-rtl-symbolic.svg b/Paper/scalable/actions/media-playback-start-rtl-symbolic.svg
+index 6cd214d..3fd0ded 100755
+--- a/Paper/scalable/actions/media-playback-start-rtl-symbolic.svg
++++ b/Paper/scalable/actions/media-playback-start-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-playback-start-symbolic.svg b/Paper/scalable/actions/media-playback-start-symbolic.svg
+index 3707b59..5bf523c 100755
+--- a/Paper/scalable/actions/media-playback-start-symbolic.svg
++++ b/Paper/scalable/actions/media-playback-start-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-playback-stop-symbolic.svg b/Paper/scalable/actions/media-playback-stop-symbolic.svg
+index c8b5daf..75ded13 100755
+--- a/Paper/scalable/actions/media-playback-stop-symbolic.svg
++++ b/Paper/scalable/actions/media-playback-stop-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-record-symbolic.svg b/Paper/scalable/actions/media-record-symbolic.svg
+index 5e2dfb0..76335dc 100755
+--- a/Paper/scalable/actions/media-record-symbolic.svg
++++ b/Paper/scalable/actions/media-record-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-seek-backward-symbolic.svg b/Paper/scalable/actions/media-seek-backward-symbolic.svg
+index cb34a97..d2ab076 100755
+--- a/Paper/scalable/actions/media-seek-backward-symbolic.svg
++++ b/Paper/scalable/actions/media-seek-backward-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-seek-forward-symbolic.svg b/Paper/scalable/actions/media-seek-forward-symbolic.svg
+index a97d75a..59dd3ed 100755
+--- a/Paper/scalable/actions/media-seek-forward-symbolic.svg
++++ b/Paper/scalable/actions/media-seek-forward-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-skip-backward-symbolic.svg b/Paper/scalable/actions/media-skip-backward-symbolic.svg
+index 4cb8302..da63c9a 100755
+--- a/Paper/scalable/actions/media-skip-backward-symbolic.svg
++++ b/Paper/scalable/actions/media-skip-backward-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/media-skip-forward-symbolic.svg b/Paper/scalable/actions/media-skip-forward-symbolic.svg
+index db86a1b..df1306f 100755
+--- a/Paper/scalable/actions/media-skip-forward-symbolic.svg
++++ b/Paper/scalable/actions/media-skip-forward-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/pan-down-symbolic.svg b/Paper/scalable/actions/pan-down-symbolic.svg
+index 6323723..ddd301f 100755
+--- a/Paper/scalable/actions/pan-down-symbolic.svg
++++ b/Paper/scalable/actions/pan-down-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/pan-end-symbolic.svg b/Paper/scalable/actions/pan-end-symbolic.svg
+index 0a398fc..d6b14ab 100755
+--- a/Paper/scalable/actions/pan-end-symbolic.svg
++++ b/Paper/scalable/actions/pan-end-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/pan-start-symbolic.svg b/Paper/scalable/actions/pan-start-symbolic.svg
+index 9f79eb5..b5fdbfd 100755
+--- a/Paper/scalable/actions/pan-start-symbolic.svg
++++ b/Paper/scalable/actions/pan-start-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/pan-up-symbolic.svg b/Paper/scalable/actions/pan-up-symbolic.svg
+index 18023e6..11dad47 100755
+--- a/Paper/scalable/actions/pan-up-symbolic.svg
++++ b/Paper/scalable/actions/pan-up-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/selection-end-symbolic.svg b/Paper/scalable/actions/selection-end-symbolic.svg
+index 516d73f..6ffb76f 100755
+--- a/Paper/scalable/actions/selection-end-symbolic.svg
++++ b/Paper/scalable/actions/selection-end-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/selection-start-symbolic.svg b/Paper/scalable/actions/selection-start-symbolic.svg
+index da66c71..950d58c 100755
+--- a/Paper/scalable/actions/selection-start-symbolic.svg
++++ b/Paper/scalable/actions/selection-start-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/view-coverflow-symbolic.svg b/Paper/scalable/actions/view-coverflow-symbolic.svg
+index 3f575de..ad47b72 100755
+--- a/Paper/scalable/actions/view-coverflow-symbolic.svg
++++ b/Paper/scalable/actions/view-coverflow-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/view-filter-symbolic.svg b/Paper/scalable/actions/view-filter-symbolic.svg
+index 6c5fd44..9a6c569 100755
+--- a/Paper/scalable/actions/view-filter-symbolic.svg
++++ b/Paper/scalable/actions/view-filter-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/zoom-in-symbolic.svg b/Paper/scalable/actions/zoom-in-symbolic.svg
+index eae9244..27375a2 100755
+--- a/Paper/scalable/actions/zoom-in-symbolic.svg
++++ b/Paper/scalable/actions/zoom-in-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/zoom-original-symbolic.svg b/Paper/scalable/actions/zoom-original-symbolic.svg
+index c18ee1d..a3ef33f 100755
+--- a/Paper/scalable/actions/zoom-original-symbolic.svg
++++ b/Paper/scalable/actions/zoom-original-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="15.982" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="15.982" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/actions/zoom-out-symbolic.svg b/Paper/scalable/actions/zoom-out-symbolic.svg
+index 0f6ae83..35c3ed1 100755
+--- a/Paper/scalable/actions/zoom-out-symbolic.svg
++++ b/Paper/scalable/actions/zoom-out-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="15.982" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="15.982" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/devices/drive-harddisk-ieee1394-symbolic.svg b/Paper/scalable/devices/drive-harddisk-ieee1394-symbolic.svg
+index 46fba9d..670fe69 100755
+--- a/Paper/scalable/devices/drive-harddisk-ieee1394-symbolic.svg
++++ b/Paper/scalable/devices/drive-harddisk-ieee1394-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/appointment-missed-symbolic.svg b/Paper/scalable/status/appointment-missed-symbolic.svg
+index 8adfdc2..e9192cf 100755
+--- a/Paper/scalable/status/appointment-missed-symbolic.svg
++++ b/Paper/scalable/status/appointment-missed-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/keyboard-brightness-symbolic.svg b/Paper/scalable/status/keyboard-brightness-symbolic.svg
+index 19b0a84..ac6dfdf 100755
+--- a/Paper/scalable/status/keyboard-brightness-symbolic.svg
++++ b/Paper/scalable/status/keyboard-brightness-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16.02" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16.02" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/mail-replied-symbolic.svg b/Paper/scalable/status/mail-replied-symbolic.svg
+index d04ca0e..023c515 100755
+--- a/Paper/scalable/status/mail-replied-symbolic.svg
++++ b/Paper/scalable/status/mail-replied-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-consecutive-rtl-symbolic.svg b/Paper/scalable/status/media-playlist-consecutive-rtl-symbolic.svg
+index 25325f4..98e7363 100755
+--- a/Paper/scalable/status/media-playlist-consecutive-rtl-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-consecutive-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-consecutive-symbolic.svg b/Paper/scalable/status/media-playlist-consecutive-symbolic.svg
+index 3000fbf..8c28013 100755
+--- a/Paper/scalable/status/media-playlist-consecutive-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-consecutive-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-no-repeat-symbolic.svg b/Paper/scalable/status/media-playlist-no-repeat-symbolic.svg
+index 8bb200f..03b2d8e 100755
+--- a/Paper/scalable/status/media-playlist-no-repeat-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-no-repeat-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-repeat-rtl-symbolic.svg b/Paper/scalable/status/media-playlist-repeat-rtl-symbolic.svg
+index 33d83a8..157e4ea 100755
+--- a/Paper/scalable/status/media-playlist-repeat-rtl-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-repeat-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-repeat-song-rtl-symbolic.svg b/Paper/scalable/status/media-playlist-repeat-song-rtl-symbolic.svg
+index a80d734..4ce54c9 100755
+--- a/Paper/scalable/status/media-playlist-repeat-song-rtl-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-repeat-song-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-repeat-song-symbolic.svg b/Paper/scalable/status/media-playlist-repeat-song-symbolic.svg
+index d21bcc2..9e93a2a 100755
+--- a/Paper/scalable/status/media-playlist-repeat-song-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-repeat-song-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-repeat-symbolic.svg b/Paper/scalable/status/media-playlist-repeat-symbolic.svg
+index e8d3285..2363132 100755
+--- a/Paper/scalable/status/media-playlist-repeat-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-repeat-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-shuffle-rtl-symbolic.svg b/Paper/scalable/status/media-playlist-shuffle-rtl-symbolic.svg
+index 69665ed..2305025 100755
+--- a/Paper/scalable/status/media-playlist-shuffle-rtl-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-shuffle-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/media-playlist-shuffle-symbolic.svg b/Paper/scalable/status/media-playlist-shuffle-symbolic.svg
+index d444912..9c116cf 100755
+--- a/Paper/scalable/status/media-playlist-shuffle-symbolic.svg
++++ b/Paper/scalable/status/media-playlist-shuffle-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-3g-symbolic.svg b/Paper/scalable/status/network-cellular-3g-symbolic.svg
+index 12c44c7..6c2c311 100755
+--- a/Paper/scalable/status/network-cellular-3g-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-3g-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-4g-symbolic.svg b/Paper/scalable/status/network-cellular-4g-symbolic.svg
+index fbabe6a..cbb7556 100755
+--- a/Paper/scalable/status/network-cellular-4g-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-4g-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-cdma-1x-symbolic.svg b/Paper/scalable/status/network-cellular-cdma-1x-symbolic.svg
+index 3cee744..2f51887 100755
+--- a/Paper/scalable/status/network-cellular-cdma-1x-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-cdma-1x-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-edge-symbolic.svg b/Paper/scalable/status/network-cellular-edge-symbolic.svg
+index 1e49a13..9442c5a 100755
+--- a/Paper/scalable/status/network-cellular-edge-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-edge-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-gprs-symbolic.svg b/Paper/scalable/status/network-cellular-gprs-symbolic.svg
+index fdf6f4a..3eb167f 100755
+--- a/Paper/scalable/status/network-cellular-gprs-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-gprs-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-hspa-symbolic.svg b/Paper/scalable/status/network-cellular-hspa-symbolic.svg
+index 4c35fee..c46ecb2 100755
+--- a/Paper/scalable/status/network-cellular-hspa-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-hspa-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/network-cellular-umts-symbolic.svg b/Paper/scalable/status/network-cellular-umts-symbolic.svg
+index 9d30264..793117e 100755
+--- a/Paper/scalable/status/network-cellular-umts-symbolic.svg
++++ b/Paper/scalable/status/network-cellular-umts-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/radio-checked-symbolic.svg b/Paper/scalable/status/radio-checked-symbolic.svg
+index df5db65..16ee9c1 100755
+--- a/Paper/scalable/status/radio-checked-symbolic.svg
++++ b/Paper/scalable/status/radio-checked-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/radio-mixed-symbolic.svg b/Paper/scalable/status/radio-mixed-symbolic.svg
+index 3e459f0..86562a5 100755
+--- a/Paper/scalable/status/radio-mixed-symbolic.svg
++++ b/Paper/scalable/status/radio-mixed-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/radio-symbolic.svg b/Paper/scalable/status/radio-symbolic.svg
+index e0ee140..b6ec9fa 100755
+--- a/Paper/scalable/status/radio-symbolic.svg
++++ b/Paper/scalable/status/radio-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/view-wrapped-rtl-symbolic.svg b/Paper/scalable/status/view-wrapped-rtl-symbolic.svg
+index 6b887ce..9b186f5 100755
+--- a/Paper/scalable/status/view-wrapped-rtl-symbolic.svg
++++ b/Paper/scalable/status/view-wrapped-rtl-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/view-wrapped-symbolic.svg b/Paper/scalable/status/view-wrapped-symbolic.svg
+index ca32526..b01fe1f 100755
+--- a/Paper/scalable/status/view-wrapped-symbolic.svg
++++ b/Paper/scalable/status/view-wrapped-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/weather-clear-night-symbolic.svg b/Paper/scalable/status/weather-clear-night-symbolic.svg
+index 4948dc7..5228527 100755
+--- a/Paper/scalable/status/weather-clear-night-symbolic.svg
++++ b/Paper/scalable/status/weather-clear-night-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+diff --git a/Paper/scalable/status/weather-fog-symbolic.svg b/Paper/scalable/status/weather-fog-symbolic.svg
+index 037afd2..aec8879 100755
+--- a/Paper/scalable/status/weather-fog-symbolic.svg
++++ b/Paper/scalable/status/weather-fog-symbolic.svg
+@@ -1,5 +1,5 @@
+ <?xml version='1.0' encoding='UTF-8' standalone='no'?>
+-<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
++<svg height="16" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:osb="http://www.openswatchbook.org/uri/2009/osb" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" version="1.1" width="16" xmlns="http://www.w3.org/2000/svg" enable-background="new">
+  <metadata id="metadata90"/>
+  <defs id="defs7386">
+   <linearGradient id="linearGradient5606" osb:paint="solid">
+-- 
+2.23.0
+

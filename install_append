@@ -1,2 +1,0 @@
-gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper -f &&
-gtk-update-icon-cache %{buildroot}%{_datadir}/icons/Paper-Mono-Dark -f

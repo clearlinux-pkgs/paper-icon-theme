@@ -1,7 +1,7 @@
-From f5e77e767b870b4137728aaf2fa688ed96ea5335 Mon Sep 17 00:00:00 2001
+From da7960b446fdc0203c10b240bb736e7b9a768f58 Mon Sep 17 00:00:00 2001
 From: tista500 <tista.gma500@gmail.com>
 Date: Thu, 7 Feb 2019 10:40:08 +0900
-Subject: [PATCH 1/2] Added symlinks for Gnome-Terminal 3.31.90
+Subject: [PATCH 1/4] Added symlinks for Gnome-Terminal 3.31.90
 
 Upstream renamed its icon name from 'utilities-terminal' to 'org.gnome.Terminal':
 https://gitlab.gnome.org/GNOME/gnome-terminal/commit/9c32e039bfb7902c136dc7aed3308e027325776c
@@ -35,5 +35,5 @@ index b842705..5a852f7 100755
  utilities-tweak-tool-symbolic.svg org.gnome.tweaks-symbolic.svg
  utilities-tweak-tool-symbolic.svg unity-tweak-tool-symbolic.svg
 -- 
-2.20.1
+2.23.0
 

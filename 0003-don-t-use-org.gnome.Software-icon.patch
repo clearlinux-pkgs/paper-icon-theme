@@ -1,7 +1,7 @@
-From 95ba54ebbf0163a07bd859041014e325a676634e Mon Sep 17 00:00:00 2001
+From 5ec7c89bbd01da9c371c08387e6bd3a860828fa5 Mon Sep 17 00:00:00 2001
 From: "Simental Magana, Marcos" <marcos.simental.magana@intel.com>
 Date: Fri, 3 May 2019 15:15:00 -0500
-Subject: [PATCH] don't use org.gnome.Software icon
+Subject: [PATCH 3/4] don't use org.gnome.Software icon
 
 So we make sure paper-icon-theme uses our default software
 icon (installed in hicolor by gnome-software)
@@ -111,5 +111,5 @@ index b06ddd2..0000000
 -software-store.png
 \ No newline at end of file
 -- 
-2.21.0
+2.23.0
 

@@ -1,7 +1,7 @@
-From 854ded525ff907a5c8c96dd8aa0b0f3f3895ae63 Mon Sep 17 00:00:00 2001
+From a91d58b3e83bf7edd8ff01a296e671504a3eb88c Mon Sep 17 00:00:00 2001
 From: Ikey Doherty <ikey.doherty@intel.com>
 Date: Thu, 14 Mar 2019 11:19:22 +0000
-Subject: [PATCH 2/2] Rebuild symlinks
+Subject: [PATCH 2/4] Rebuild symlinks
 
 This adds missing gnome-terminal link from previous upstream patch
 as well as generating ones missing from the 1.5 release.
@@ -1611,5 +1611,5 @@ index 0000000..74945ec
 +non-starred.png
 \ No newline at end of file
 -- 
-2.20.1
+2.23.0
 
